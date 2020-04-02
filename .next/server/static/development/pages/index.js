@@ -93,6 +93,25 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./Helper/Constants.js":
+/*!*****************************!*\
+  !*** ./Helper/Constants.js ***!
+  \*****************************/
+/*! exports provided: COLORS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COLORS", function() { return COLORS; });
+const COLORS = {
+  BLACK: '#000',
+  WHITE: '#fff',
+  HEADER_BG_COLOR: 'rgb(30, 42, 54)',
+  HEADER_ICON_COLORS: 'rgb(187, 191, 194)'
+};
+
+/***/ }),
+
 /***/ "./components/Footer.js":
 /*!******************************!*\
   !*** ./components/Footer.js ***!
@@ -110,19 +129,170 @@ __webpack_require__.r(__webpack_exports__);
 var next_i18next_package_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! next-i18next/package.json */ "./node_modules/next-i18next/package.json", 1);
 /* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../i18n */ "./i18n.js");
 /* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__);
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
+ //styling
 
-const Footer = ({
-  t
-}) => __jsx("footer", {
-  className: "foo"
-}, __jsx("p", {
-  className: "footerTitle"
-}, t('description')));
+
+ //icons & colors
+
+
+const SERVICES = [{
+  name: 'About Us'
+}, {
+  name: 'Media Centers'
+}, {
+  name: 'Contact Us'
+}, {
+  name: 'Terms & Conditions'
+}, {
+  name: 'Privacy Policy'
+}];
+const POPULAR_SEARCHES = [{
+  name: "Watches"
+}, {
+  name: "Macbook Air"
+}, {
+  name: "Shoes"
+}, {
+  name: "TV"
+}, {
+  name: "Mobiles"
+}, {
+  name: "Mobile Accessories"
+}, {
+  name: "Men's Fashion"
+}, {
+  name: "Women's Fashion"
+}, {
+  name: "Home Appliances"
+}, {
+  name: "Makeup"
+}];
+const ACCOUNT_DETAIL = [{
+  name: 'Log In'
+}, {
+  name: 'Register'
+}, {
+  name: 'My Favourites'
+}, {
+  name: 'Account Settings'
+}, {
+  name: 'Account Summary'
+}];
+const SOCIAL_LOGOES = [{
+  img: "/static/images/twitter.png"
+}, {
+  img: "/static/images/facebook.png"
+}, {
+  img: "/static/images/youtube.png"
+}, {
+  img: "/static/images/instagram.png"
+}, {
+  img: "/static/images/pinterest.png"
+}];
+
+class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "renderFirstFooterContainer", () => {
+      return __jsx("div", {
+        className: "first-footer"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+        lg: 3,
+        md: 6,
+        sm: 12,
+        className: "column"
+      }, __jsx("div", {
+        className: "logo-col"
+      }, __jsx("p", {
+        id: "title"
+      }, "Dealbab"), __jsx("p", {
+        id: "sub-title"
+      }, "Explore more")), SERVICES.map((item, index) => {
+        return __jsx("a", {
+          href: "#",
+          className: "col-items-service"
+        }, item.name);
+      })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+        lg: 3,
+        md: 6,
+        sm: 12,
+        className: "column"
+      }, __jsx("h5", {
+        className: "col-title"
+      }, "popular searches"), POPULAR_SEARCHES.map((item, index) => {
+        return __jsx("p", {
+          className: "col-items"
+        }, item.name);
+      })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+        lg: 3,
+        md: 6,
+        sm: 12,
+        className: "column"
+      }, __jsx("h5", {
+        className: "col-title"
+      }, "my account"), ACCOUNT_DETAIL.map((item, index) => {
+        return __jsx("p", {
+          className: "col-items"
+        }, item.name);
+      }), __jsx("h5", {
+        className: "col-title col-semi-title"
+      }, "intellectual property"), __jsx("p", {
+        className: "col-items"
+      }, "Brand and Copyright Owners"), __jsx("p", {
+        className: "col-items"
+      }, "Marketplace Sellers")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+        lg: 3,
+        md: 6,
+        sm: 12,
+        className: "column"
+      }, __jsx("div", {
+        className: "help-container"
+      }, __jsx("p", {
+        className: "help-title"
+      }, "help center", __jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__["FaRegQuestionCircle"], {
+        className: "help-icon"
+      })), __jsx("p", {
+        className: "help-subtitle"
+      }, "Have you any question or issue? We are always here for you.")), __jsx("h5", {
+        className: "col-title"
+      }, "follow us on"), SOCIAL_LOGOES.map((item, index) => {
+        return __jsx("a", {
+          href: "#"
+        }, __jsx("img", {
+          src: item.img,
+          alt: "404!",
+          className: "social-logoes"
+        }));
+      })))));
+    });
+
+    _defineProperty(this, "renderSecondFooterContainer", () => {
+      return __jsx("div", {
+        className: "second-footer"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], null, __jsx("p", {
+        className: "copyright"
+      }, "\xA9 2020 Dealbab.com ")));
+    });
+  }
+
+  render() {
+    return __jsx("footer", {
+      className: "footer-container"
+    }, this.renderFirstFooterContainer(), this.renderSecondFooterContainer());
+  }
+
+}
 
 Footer.propTypes = {
   t: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
@@ -146,34 +316,152 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/head */ "next/head");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_icons_gi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/gi */ "react-icons/gi");
+/* harmony import */ var react_icons_gi__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_icons_gi__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/io */ "react-icons/io");
+/* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_icons_io__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Helper_Constants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Helper/Constants */ "./Helper/Constants.js");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+
+ //styling
+
+ //icons & colors
+
+
+
+
+
+const CATEGORIES = [{
+  title: 'All Categories'
+}, {
+  title: 'Supermarket'
+}, {
+  title: 'Mobiles & Tablets'
+}, {
+  title: 'Electronics'
+}, {
+  title: 'Home'
+}, {
+  title: 'Beauty'
+}, {
+  title: 'Baby'
+}, {
+  title: 'Toys'
+}, {
+  title: 'Sports'
+}, {
+  title: 'Brand'
+}];
 
 class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "_toggleDropDown", () => {
+      this.setState({
+        dropdownOpen: !this.state.dropdownOpen
+      });
+    });
+
+    _defineProperty(this, "renderSearchBar", () => {
+      return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroup"], {
+        id: "search-bar"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
+        placeholder: "What are you looking for?",
+        className: "search-input"
+      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroupAddon"], {
+        addonType: "append"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+        className: "search-button"
+      }, __jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__["FaSearch"], {
+        className: "search-icon"
+      }))));
+    });
+
+    _defineProperty(this, "renderSubHeader", () => {
+      return __jsx("div", {
+        id: "sub-header"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, __jsx("ul", null, CATEGORIES.map((item, index) => {
+        return __jsx("li", {
+          className: "categories"
+        }, __jsx("a", {
+          href: "#"
+        }, item.title));
+      })))));
+    });
+
+    this.state = {
+      dropdownOpen: false,
+      favIndex: 0
+    };
+  }
+
   render() {
     const {
-      title
-    } = this.props;
-    return __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx("title", null, "Dealbab"), __jsx("link", {
+      favIndex
+    } = this.state;
+    return __jsx("div", {
+      className: "header-container"
+    }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx("title", null, "Dealbab"), __jsx("link", {
+      href: "https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Nunito:wght@300&family=Nunito:wght@600&display=swap",
+      rel: "stylesheet"
+    }), __jsx("link", {
       href: "https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css",
       rel: "stylesheet"
     }), __jsx("link", {
       href: "/static/app.css",
       rel: "stylesheet"
-    }), __jsx("link", {
-      href: "https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css",
-      rel: "stylesheet"
-    }), __jsx("link", {
-      href: "https://fonts.googleapis.com/css?family=Open+Sans:300,400|Oswald:600",
-      rel: "stylesheet"
-    }), __jsx("link", {
-      "data-react-helmet": "true",
-      rel: "icon",
-      href: "https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/spaces%2F-L9iS6Wm2hynS5H9Gj7j%2Favatar.png?generation=1523462254548780&alt=media"
-    })), __jsx("h1", null, title));
+    })), __jsx("div", {
+      id: "main-header"
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, __jsx(react_icons_io__WEBPACK_IMPORTED_MODULE_5__["IoIosMenu"], {
+      color: _Helper_Constants__WEBPACK_IMPORTED_MODULE_7__["COLORS"].BLACK,
+      className: "menu-icon"
+    }), __jsx("div", null, __jsx("p", {
+      id: "title"
+    }, "Dealbab"), __jsx("p", {
+      id: "sub-title"
+    }, "Explore more")), this.renderSearchBar(), __jsx("div", {
+      className: "login-section"
+    }, __jsx("p", {
+      className: "login"
+    }, "Log In")), __jsx("div", {
+      className: "favourite-deal"
+    }, __jsx("div", null, __jsx("img", {
+      src: "/static/images/like.png",
+      alt: "404!",
+      className: "favourite-img"
+    }), __jsx("p", {
+      className: "fav-index"
+    }, favIndex))), __jsx("p", {
+      className: "favourite-text"
+    }, "Favourites"), __jsx("div", {
+      id: "lng"
+    }, __jsx("img", {
+      src: "/static/images/en.png",
+      alt: "404!",
+      className: "lng-icon"
+    }), __jsx("p", {
+      className: "lng-text"
+    }, "en-US"))))), this.renderSubHeader());
   }
+  /*
+  .##........#######...######...####..######...######.
+  .##.......##.....##.##....##...##..##....##.##....##
+  .##.......##.....##.##.........##..##.......##......
+  .##.......##.....##.##...####..##..##........######.
+  .##.......##.....##.##....##...##..##.............##
+  .##.......##.....##.##....##...##..##....##.##....##
+  .########..#######...######...####..######...######.
+  */
+
 
 }
 
@@ -255,7 +543,7 @@ class Homepage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
     super(props);
     this.state = {
-      isArabic: true
+      isArabic: false
     };
   }
 
@@ -268,25 +556,9 @@ class Homepage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     } = this.props;
     return __jsx("html", {
       dir: isArabic ? "rtl" : "ltr"
-    }, __jsx("main", {
-      className: "headerSection"
     }, __jsx(_components_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
       title: t('h1')
-    }), __jsx("h1", null, isArabic), __jsx("div", null, __jsx("button", {
-      className: "changeLanguageButton",
-      type: "button",
-      onClick: () => {
-        _i18n__WEBPACK_IMPORTED_MODULE_2__["i18n"].changeLanguage(_i18n__WEBPACK_IMPORTED_MODULE_2__["i18n"].language === 'en' ? 'ar' : 'en');
-        this.setState({
-          isArabic: !isArabic
-        });
-      }
-    }, t('change-locale')), __jsx(_i18n__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-      href: "/second-page"
-    }, __jsx("button", {
-      className: "goToSecondPage",
-      type: "button"
-    }, t('to-second-page'))))), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+    }), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
   }
 
 }
@@ -366,6 +638,50 @@ module.exports = require("prop-types");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-icons/fa":
+/*!*********************************!*\
+  !*** external "react-icons/fa" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-icons/fa");
+
+/***/ }),
+
+/***/ "react-icons/gi":
+/*!*********************************!*\
+  !*** external "react-icons/gi" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-icons/gi");
+
+/***/ }),
+
+/***/ "react-icons/io":
+/*!*********************************!*\
+  !*** external "react-icons/io" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-icons/io");
+
+/***/ }),
+
+/***/ "reactstrap":
+/*!*****************************!*\
+  !*** external "reactstrap" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("reactstrap");
 
 /***/ })
 

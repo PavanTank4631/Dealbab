@@ -12,7 +12,7 @@ class Homepage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isArabic: true
+      isArabic: false
     }
   }
 
@@ -22,30 +22,7 @@ class Homepage extends Component {
 
     return (
       <html dir={isArabic ? "rtl" : "ltr"}>
-        <main className='headerSection'>
-          <Header title={t('h1')} />
-          <h1>{isArabic}</h1>
-          <div>
-            <button
-              className="changeLanguageButton"
-              type='button'
-              onClick={() => {
-                i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en')
-                this.setState({ isArabic: !isArabic })
-              }}
-            >
-              {t('change-locale')}
-            </button>
-            <Link href='/second-page'>
-              <button
-                className="goToSecondPage"
-                type='button'
-              >
-                {t('to-second-page')}
-              </button>
-            </Link>
-          </div>
-        </main>
+        <Header title={t('h1')} />
         <Footer />
       </html>
     )

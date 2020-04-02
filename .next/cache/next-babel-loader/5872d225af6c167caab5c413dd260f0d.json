@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var COLORS = {\n  BLACK: '#000',\n  WHITE: '#fff',\n  HEADER_BG_COLOR: 'rgb(30, 42, 54)',\n  HEADER_ICON_COLORS: 'rgb(187, 191, 194)'\n};","map":null,"metadata":{},"sourceType":"module"}
