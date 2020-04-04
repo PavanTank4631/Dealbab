@@ -398,18 +398,14 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
         fluid: true,
         className: "spacing"
-      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
-        lg: 3
-      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
-        lg: 9
-      }, __jsx("ul", null, CATEGORIES.map((item, index) => {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx("ul", null, CATEGORIES.map((item, index) => {
         return __jsx("li", {
           key: item.toString(),
           className: "categories"
         }, __jsx("a", {
           href: "#"
         }, item.title));
-      }))))));
+      })))));
     });
 
     this.state = {
@@ -449,7 +445,7 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("div", {
       className: "header-container"
     }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx("title", null, "Dealbab"), __jsx("link", {
-      href: "https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Nunito:wght@300&family=Nunito:wght@600&display=swap",
+      href: "https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Nunito:wght@300&family=Nunito:wght@600&family=Nunito:wght@900&family=Nunito:wght@800&display=swap",
       rel: "stylesheet"
     }), __jsx("link", {
       href: "https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css",
@@ -548,6 +544,104 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+const FEATURED_PRODUCTS = [{
+  "img": "/static/images/1.png",
+  "title": "65-Inch 4K UHD Smart OLED TV OLED65C9PVA Black"
+}, {
+  "img": "/static/images/2.png",
+  "title": "Samsung Galaxy Tab 10.1 T580"
+}, {
+  "img": "/static/images/3.png",
+  "title": "DeLonghi ECAM 350.75 Dinamica Fully Automatic Coffee Machine, Silver"
+}, {
+  "img": "/static/images/4.png",
+  "title": "Samsung Galaxy Fit Black"
+}, {
+  "img": "/static/images/5.png",
+  "title": "Astro Gaming A20 Headset"
+}, {
+  "img": "/static/images/6.png",
+  "title": "Men's Nate Chronograph Quartz Watch JR1354"
+}];
+const DEALBAB_DEALS = [{
+  "img": "/static/images/7.png",
+  "title": "Calvin Klein Eternity Moment For Women"
+}, {
+  "img": "/static/images/8.png",
+  "title": "Lancome La Nuit Tresor For Women 75ml"
+}, {
+  "img": "/static/images/9.png",
+  "title": "Fujifilm Instax Mini 25"
+}, {
+  "img": "/static/images/10.png",
+  "title": "DJI Mavic 2 Zoom Drone Quadcopter"
+}, {
+  "img": "/static/images/11.png",
+  "title": "Microsoft Surface Pro 6"
+}, {
+  "img": "/static/images/12.png",
+  "title": "Bowers and Wilkins P9 Signature headphones"
+}];
+const MOST_POPULAR = [{
+  "img": "/static/images/13.png",
+  "title": "Lenovo ThinkPad"
+}, {
+  "img": "/static/images/14.png",
+  "title": "HP Omen 15 Laptop"
+}, {
+  "img": "/static/images/15.png",
+  "title": "Huawei P20 Pro"
+}, {
+  "img": "/static/images/16.png",
+  "title": "Apple iPad Pro 2017 12 9 Inch"
+}, {
+  "img": "/static/images/17.png",
+  "title": "Nintendo Switch"
+}, {
+  "img": "/static/images/18.png",
+  "title": "Apple iPhone 11"
+}];
+const COUPENS = [{
+  "img": "/static/images/c1.png",
+  "title": "Babystore",
+  "subtitle": "55 AED off coupon from Babystore"
+}, {
+  "img": "/static/images/c2.png",
+  "title": "Bath&Body Works",
+  "subtitle": "10% off coupon from Bath&Body Works"
+}, {
+  "img": "/static/images/c3.png",
+  "title": "boohoo",
+  "subtitle": "20% off coupon from boohoo"
+}, {
+  "img": "/static/images/c4.png",
+  "title": "Gap",
+  "subtitle": "10 AED off coupon from Gap"
+}, {
+  "img": "/static/images/c5.png",
+  "title": "H&M",
+  "subtitle": "Use coupon 'HM25' for 25% off from H&M"
+}, {
+  "img": "/static/images/c6.png",
+  "title": "lacoste",
+  "subtitle": "12% off coupon from lacoste"
+}, {
+  "img": "/static/images/c7.png",
+  "title": "French Fragrance",
+  "subtitle": "10% off coupon from French Fragrance"
+}, {
+  "img": "/static/images/c8.png",
+  "title": "Shop Global 24x7",
+  "subtitle": "5% off coupon from Shop Global 24x7"
+}, {
+  "img": "/static/images/c9.png",
+  "title": "Sprii",
+  "subtitle": "10% off coupon from Sprii"
+}, {
+  "img": "/static/images/c10.png",
+  "title": "Zypermart",
+  "subtitle": "120 AED off coupon from Zypermart"
+}];
 
 class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
@@ -557,6 +651,117 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       this.setState({
         dropdownOpen: !this.state.dropdownOpen
       });
+    });
+
+    _defineProperty(this, "renderBodyContainer", () => {
+      return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
+        fluid: true,
+        className: "spacing"
+      }, __jsx("div", {
+        className: "products-section"
+      }, this.renderFeaturedProducts(), this.renderCoupens(), this.renderFoundByDealbabProducts(), this.renderMostPopularProducts()));
+    });
+
+    _defineProperty(this, "renderFeaturedProducts", () => {
+      const {
+        t
+      } = this.props;
+      return __jsx("div", null, __jsx("h3", {
+        className: "section-title"
+      }, t('featured-products')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, FEATURED_PRODUCTS.map((item, index) => {
+        return __jsx("div", {
+          className: "product-container"
+        }, __jsx("div", {
+          className: "product-semicontainer"
+        }, __jsx("img", {
+          src: item.img,
+          className: "product-img"
+        }), __jsx("p", {
+          className: "product-title"
+        }, item.title), __jsx("p", {
+          className: "product-subtitle"
+        }, "deals from 4 shops")), __jsx("div", {
+          className: "deal-button"
+        }, __jsx("p", {
+          className: "button-text"
+        }, "check deal")));
+      })));
+    });
+
+    _defineProperty(this, "renderCoupens", () => {
+      const {
+        t
+      } = this.props;
+      return __jsx("div", null, __jsx("h3", {
+        className: "section-title"
+      }, t('featured-products')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, COUPENS.map((item, index) => {
+        return __jsx("div", {
+          className: "product-container coupen-container"
+        }, __jsx("div", {
+          className: "coupen-logo-div"
+        }, __jsx("img", {
+          src: item.img,
+          className: "coupen-logo-img"
+        })), __jsx("p", {
+          className: "coupen-name"
+        }, item.title), __jsx("p", {
+          className: "coupen-detail"
+        }, item.subtitle), __jsx("p", {
+          className: "eligible-product-text"
+        }, t('view-eligible-products')));
+      })));
+    });
+
+    _defineProperty(this, "renderFoundByDealbabProducts", () => {
+      const {
+        t
+      } = this.props;
+      return __jsx("div", null, __jsx("h3", {
+        className: "section-title"
+      }, t('deals-by-Dealbab')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, DEALBAB_DEALS.map((item, index) => {
+        return __jsx("div", {
+          className: "product-container"
+        }, __jsx("div", {
+          className: "product-semicontainer"
+        }, __jsx("img", {
+          src: item.img,
+          className: "product-img"
+        }), __jsx("p", {
+          className: "product-title"
+        }, item.title), __jsx("p", {
+          className: "product-subtitle"
+        }, "deals from 4 shops")), __jsx("div", {
+          className: "deal-button"
+        }, __jsx("p", {
+          className: "button-text"
+        }, "check deal")));
+      })));
+    });
+
+    _defineProperty(this, "renderMostPopularProducts", () => {
+      const {
+        t
+      } = this.props;
+      return __jsx("div", null, __jsx("h3", {
+        className: "section-title"
+      }, t('most-popular')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, MOST_POPULAR.map((item, index) => {
+        return __jsx("div", {
+          className: "product-container"
+        }, __jsx("div", {
+          className: "product-semicontainer"
+        }, __jsx("img", {
+          src: item.img,
+          className: "product-img"
+        }), __jsx("p", {
+          className: "product-title"
+        }, item.title), __jsx("p", {
+          className: "product-subtitle"
+        }, "deals from 4 shops")), __jsx("div", {
+          className: "deal-button"
+        }, __jsx("p", {
+          className: "button-text"
+        }, "check deal")));
+      })));
     });
 
     this.state = {};
@@ -569,7 +774,9 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     const {
       t
     } = this.props;
-    return __jsx("div", null, "hello");
+    return __jsx("div", {
+      className: "main-page-container"
+    }, this.renderBodyContainer());
   }
   /*
   .##........#######...######...####..######...######.
@@ -579,16 +786,6 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   .##.......##.....##.##....##...##..##.............##
   .##.......##.....##.##....##...##..##....##.##....##
   .########..#######...######...####..######...######.
-  */
-
-  /*
-  ..######...#######..##.....##.########...#######..##....##.########.##....##.########..######.
-  .##....##.##.....##.###...###.##.....##.##.....##.###...##.##.......###...##....##....##....##
-  .##.......##.....##.####.####.##.....##.##.....##.####..##.##.......####..##....##....##......
-  .##.......##.....##.##.###.##.########..##.....##.##.##.##.######...##.##.##....##.....######.
-  .##.......##.....##.##.....##.##........##.....##.##..####.##.......##..####....##..........##
-  .##....##.##.....##.##.....##.##........##.....##.##...###.##.......##...###....##....##....##
-  ..######...#######..##.....##.##.........#######..##....##.########.##....##....##.....######.
   */
 
 

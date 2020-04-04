@@ -45,7 +45,7 @@ class Header extends Component {
       <div className="header-container">
         <Head>
           <title>Dealbab</title>
-          <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Nunito:wght@300&family=Nunito:wght@600&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Nunito:wght@300&family=Nunito:wght@600&family=Nunito:wght@900&family=Nunito:wght@800&display=swap" rel="stylesheet" />
           <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" />
           <link href="/static/app.css" rel="stylesheet" />
         </Head>
@@ -128,18 +128,15 @@ class Header extends Component {
       <div id="sub-header">
         <Container fluid className="spacing">
           <Row>
-            <Col lg={3}></Col>
-            <Col lg={9}>
-              <ul>
-                {CATEGORIES.map((item, index) => {
-                  return (
-                    <li key={item.toString()} className="categories" >
-                      <a href="#">{item.title}</a>
-                    </li>
-                  )
-                })}
-              </ul>
-            </Col>
+            <ul>
+              {CATEGORIES.map((item, index) => {
+                return (
+                  <li key={item.toString()} className="categories" >
+                    <a href="#">{item.title}</a>
+                  </li>
+                )
+              })}
+            </ul>
           </Row>
         </Container>
       </div>
