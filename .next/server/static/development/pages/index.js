@@ -176,34 +176,66 @@ class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         id: "title"
       }, "Dealbab"), __jsx("p", {
         id: "sub-title"
-      }, t('explore-more'))), SERVICES.map((item, index) => {
-        return __jsx("a", {
-          href: "#",
-          className: "col-items-service"
-        }, item.name);
-      })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+      }, t('explore-more'))), __jsx("a", {
+        href: "#",
+        className: "col-items-service"
+      }, t('about-us')), __jsx("a", {
+        href: "#",
+        className: "col-items-service"
+      }, t('media-centers')), __jsx("a", {
+        href: "#",
+        className: "col-items-service"
+      }, t('contact-us')), __jsx("a", {
+        href: "#",
+        className: "col-items-service"
+      }, t('terms')), __jsx("a", {
+        href: "#",
+        className: "col-items-service"
+      }, t('privacy'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
         lg: 3,
         md: 6,
         sm: 12,
         className: "column"
       }, __jsx("h5", {
         className: "col-title"
-      }, t('popular-search')), POPULAR_SEARCHES.map((item, index) => {
-        return __jsx("p", {
-          className: "col-items"
-        }, item.name);
-      })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+      }, t('popular-search')), __jsx("p", {
+        className: "col-items"
+      }, t('category1')), __jsx("p", {
+        className: "col-items"
+      }, t('category2')), __jsx("p", {
+        className: "col-items"
+      }, t('category3')), __jsx("p", {
+        className: "col-items"
+      }, t('category4')), __jsx("p", {
+        className: "col-items"
+      }, t('category5')), __jsx("p", {
+        className: "col-items"
+      }, t('category6')), __jsx("p", {
+        className: "col-items"
+      }, t('category7')), __jsx("p", {
+        className: "col-items"
+      }, t('category8')), __jsx("p", {
+        className: "col-items"
+      }, t('category9')), __jsx("p", {
+        className: "col-items"
+      }, t('category10'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
         lg: 3,
         md: 6,
         sm: 12,
         className: "column"
       }, __jsx("h5", {
         className: "col-title"
-      }, t('my-account')), ACCOUNT_DETAIL.map((item, index) => {
-        return __jsx("p", {
-          className: "col-items"
-        }, item.name);
-      }), __jsx("h5", {
+      }, t('my-account')), __jsx("p", {
+        className: "col-items"
+      }, t('login')), __jsx("p", {
+        className: "col-items"
+      }, t('register')), __jsx("p", {
+        className: "col-items"
+      }, t('my-fav')), __jsx("p", {
+        className: "col-items"
+      }, t('account-settings')), __jsx("p", {
+        className: "col-items"
+      }, t('account-summary')), __jsx("h5", {
         className: "col-title col-semi-title"
       }, t('intellectual-property')), __jsx("p", {
         className: "col-items"
@@ -393,19 +425,55 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       const {
         CATEGORIES
       } = this.state;
+      const {
+        t
+      } = this.props;
       return __jsx("div", {
         id: "sub-header"
       }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
         fluid: true,
         className: "spacing"
-      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx("ul", null, CATEGORIES.map((item, index) => {
-        return __jsx("li", {
-          key: item.toString(),
-          className: "categories"
-        }, __jsx("a", {
-          href: "#"
-        }, item.title));
-      })))));
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx("ul", null, __jsx("li", {
+        className: "categories"
+      }, __jsx("a", {
+        href: "#"
+      }, t('all-category'))), __jsx("li", {
+        className: "categories"
+      }, __jsx("a", {
+        href: "#"
+      }, t('category1'))), __jsx("li", {
+        className: "categories"
+      }, __jsx("a", {
+        href: "#"
+      }, t('category2'))), __jsx("li", {
+        className: "categories"
+      }, __jsx("a", {
+        href: "#"
+      }, t('category3'))), __jsx("li", {
+        className: "categories"
+      }, __jsx("a", {
+        href: "#"
+      }, t('category4'))), __jsx("li", {
+        className: "categories"
+      }, __jsx("a", {
+        href: "#"
+      }, t('category5'))), __jsx("li", {
+        className: "categories"
+      }, __jsx("a", {
+        href: "#"
+      }, t('category6'))), __jsx("li", {
+        className: "categories"
+      }, __jsx("a", {
+        href: "#"
+      }, t('category7'))), __jsx("li", {
+        className: "categories"
+      }, __jsx("a", {
+        href: "#"
+      }, t('category8'))), __jsx("li", {
+        className: "categories"
+      }, __jsx("a", {
+        href: "#"
+      }, t('category9')))))));
     });
 
     this.state = {
@@ -480,14 +548,15 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     }, favIndex))), __jsx("p", {
       className: "favourite-text"
     }, t('fav')), __jsx("div", {
-      id: "lng"
+      id: "lng",
+      onClick: this.props.manageLanguage
     }, __jsx("img", {
-      src: "/static/images/en.png",
+      src: this.props.flagUrl,
       alt: "404!",
       className: "lng-icon"
     }), __jsx("p", {
       className: "lng-text"
-    }, "en-US"))))), this.renderSubHeader());
+    }, !this.props.isArabic ? 'عربى' : 'English'))))), this.renderSubHeader());
   }
   /*
   .##........#######...######...####..######...######.
@@ -659,7 +728,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         className: "spacing"
       }, __jsx("div", {
         className: "products-section"
-      }, this.renderFeaturedProducts(), this.renderCoupens(), this.renderFoundByDealbabProducts(), this.renderMostPopularProducts()));
+      }, this.renderFeaturedProducts(), this.renderCoupens(), this.renderFoundByDealbabProducts(), this.renderMostPopularProducts(), this.renderDisclaimerSection()));
     });
 
     _defineProperty(this, "renderFeaturedProducts", () => {
@@ -764,7 +833,63 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       })));
     });
 
-    this.state = {};
+    _defineProperty(this, "renderDisclaimerSection", () => {
+      const {
+        DISCLAIMER
+      } = this.state;
+      const {
+        t
+      } = this.props;
+      return __jsx("div", {
+        className: "disclaimer-container"
+      }, __jsx("div", null, __jsx("p", {
+        className: "disclaimer-title"
+      }, t('descTitle1')), __jsx("p", {
+        className: "disclaimer-detail"
+      }, t('descDetail1'))), __jsx("div", null, __jsx("p", {
+        className: "disclaimer-title"
+      }, t('descTitle2')), __jsx("p", {
+        className: "disclaimer-detail"
+      }, t('descDetail2'))), __jsx("div", null, __jsx("p", {
+        className: "disclaimer-title"
+      }, t('descTitle3')), __jsx("p", {
+        className: "disclaimer-detail"
+      }, t('descDetail3'))), __jsx("div", null, __jsx("p", {
+        className: "disclaimer-title"
+      }, t('descTitle4')), __jsx("p", {
+        className: "disclaimer-detail"
+      }, t('descDetail4'))), __jsx("div", null, __jsx("p", {
+        className: "disclaimer-title"
+      }, t('descTitle5')), __jsx("p", {
+        className: "disclaimer-detail"
+      }, t('descDetail5'))), __jsx("div", null, __jsx("p", {
+        className: "disclaimer-title"
+      }, t('descTitle6')), __jsx("p", {
+        className: "disclaimer-detail"
+      }, t('descDetail6'))));
+    });
+
+    this.state = {
+      DISCLAIMER: [{
+        title: props.t('descTitle1'),
+        detail: props.t('descDetail1')
+      }, {
+        title: props.t('descTitle2'),
+        detail: props.t('descDetail2')
+      }, {
+        title: props.t('descTitle3'),
+        detail: props.t('descDetail3')
+      }, {
+        title: props.t('descTitle4'),
+        detail: props.t('descDetail4')
+      }, {
+        title: props.t('descTitle5'),
+        detail: props.t('descDetail5')
+      }, {
+        title: props.t('descTitle6'),
+        detail: props.t('descDetail6')
+      }]
+    };
   }
 
   render() {
@@ -822,6 +947,7 @@ const localeSubpathVariations = {
   }
 };
 module.exports = new NextI18Next({
+  lng: 'en',
   otherLanguages: ['ar'],
   localeSubpaths: localeSubpathVariations[localeSubpaths]
 });
@@ -859,6 +985,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MainPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/MainPage */ "./components/MainPage.js");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
  //i18n
 
  //file imports
@@ -870,6 +999,15 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 class Homepage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
     super(props);
+
+    _defineProperty(this, "_manageLanguage", () => {
+      this.setState({
+        isArabic: !this.state.isArabic
+      }, () => {
+        _i18n__WEBPACK_IMPORTED_MODULE_2__["i18n"].changeLanguage(_i18n__WEBPACK_IMPORTED_MODULE_2__["i18n"].language === 'en' ? 'ar' : 'en');
+      });
+    });
+
     this.state = {
       isArabic: false
     };
@@ -885,7 +1023,9 @@ class Homepage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("html", {
       dir: isArabic ? "rtl" : "ltr"
     }, __jsx(_components_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      isArabic: isArabic
+      isArabic: isArabic,
+      manageLanguage: this._manageLanguage,
+      flagUrl: !isArabic ? '/static/images/ar.png' : '/static/images/en.png'
     }), __jsx(_components_MainPage__WEBPACK_IMPORTED_MODULE_5__["default"], null), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
   }
 

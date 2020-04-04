@@ -17,13 +17,19 @@ class Homepage extends Component {
     }
   }
 
+  _manageLanguage = () => {
+    this.setState({ isArabic: !this.state.isArabic }, () => {
+      i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en')
+    })
+  }
+
   render() {
     const { isArabic } = this.state
     const { t } = this.props
 
     return (
       <html dir={isArabic ? "rtl" : "ltr"}>
-        <Header isArabic={isArabic} />
+        <Header isArabic={isArabic} manageLanguage={this._manageLanguage} flagUrl={!isArabic ? '/static/images/ar.png' : '/static/images/en.png'} />
         <MainPage />
         <Footer />
       </html>

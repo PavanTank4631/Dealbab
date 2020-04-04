@@ -74,27 +74,44 @@ class Footer extends Component {
                 <p id="title">Dealbab</p>
                 <p id="sub-title">{t('explore-more')}</p>
               </div>
-              {SERVICES.map((item, index) => {
-                return (
-                  <a href="#" className="col-items-service">{item.name}</a>
-                )
-              })}
+              {/* {SERVICES.map((item, index) => {
+                return ( */}
+              <a href="#" className="col-items-service">{t('about-us')}</a>
+              <a href="#" className="col-items-service">{t('media-centers')}</a>
+              <a href="#" className="col-items-service">{t('contact-us')}</a>
+              <a href="#" className="col-items-service">{t('terms')}</a>
+              <a href="#" className="col-items-service">{t('privacy')}</a>
+              {/* //   )
+            // })} */}
             </Col>
             <Col lg={3} md={6} sm={12} className="column">
               <h5 className="col-title">{t('popular-search')}</h5>
-              {POPULAR_SEARCHES.map((item, index) => {
-                return (
-                  <p className="col-items">{item.name}</p>
-                )
-              })}
+              {/* {POPULAR_SEARCHES.map((item, index) => {
+                return ( */}
+              <p className="col-items">{t('category1')}</p>
+              <p className="col-items">{t('category2')}</p>
+              <p className="col-items">{t('category3')}</p>
+              <p className="col-items">{t('category4')}</p>
+              <p className="col-items">{t('category5')}</p>
+              <p className="col-items">{t('category6')}</p>
+              <p className="col-items">{t('category7')}</p>
+              <p className="col-items">{t('category8')}</p>
+              <p className="col-items">{t('category9')}</p>
+              <p className="col-items">{t('category10')}</p>
+              {/* //   )
+            // })} */}
             </Col>
             <Col lg={3} md={6} sm={12} className="column">
               <h5 className="col-title">{t('my-account')}</h5>
-              {ACCOUNT_DETAIL.map((item, index) => {
-                return (
-                  <p className="col-items">{item.name}</p>
-                )
-              })}
+              {/* {ACCOUNT_DETAIL.map((item, index) => {
+                return ( */}
+              <p className="col-items">{t('login')}</p>
+              <p className="col-items">{t('register')}</p>
+              <p className="col-items">{t('my-fav')}</p>
+              <p className="col-items">{t('account-settings')}</p>
+              <p className="col-items">{t('account-summary')}</p>
+              {/* //   )
+              // })} */}
               <h5 className="col-title col-semi-title">{t('intellectual-property')}</h5>
               <p className="col-items">{t('brand-owners')}</p>
               <p className="col-items">{t('market-sellers')}</p>

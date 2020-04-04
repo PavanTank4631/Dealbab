@@ -117,6 +117,7 @@ const localeSubpathVariations = {
   }
 };
 module.exports = new NextI18Next({
+  lng: 'en',
   otherLanguages: ['ar'],
   localeSubpaths: localeSubpathVariations[localeSubpaths]
 });

@@ -185,6 +185,7 @@ p {
 
 [dir="rtl"] .login-section {
   border-left: 1px solid var(--header1-text-color);
+  border-right: 0;
   margin-left: 10px;
   align-self: center;
 }
@@ -239,6 +240,7 @@ p {
   align-self: center;
   font-weight: bold;
   border-left: 1px solid var(--header1-text-color);
+  border-right: 0;
   padding-left: 10px;
   margin-left: 10px;
 }
@@ -437,6 +439,44 @@ p {
   margin-top: 5px;
 }
 
+[dir="ltr"] .disclaimer-title {
+  font-family: var(--body-fonts);
+  color: var(--header1-text-color);
+  font-weight: 800;
+  font-size: 18px;
+  margin: 0;
+  margin-top: 5px;
+}
+
+[dir="rtl"] .disclaimer-title {
+  font-family: var(--body-fonts);
+  color: var(--header1-text-color);
+  font-weight: 800;
+  font-size: 18px;
+  margin: 0;
+  margin-top: 5px;
+  text-align: right;
+}
+
+[dir="ltr"] .disclaimer-detail {
+  font-family: var(--body-fonts);
+  color: var(--header1-text-color);
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+[dir="rtl"] .disclaimer-detail {
+  font-family: var(--body-fonts);
+  color: var(--header1-text-color);
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 15px;
+  text-align: right;
+}
+
 /*
 .########..#######...#######..########.########.########.
 .##.......##.....##.##.....##....##....##.......##.....##
@@ -563,7 +603,7 @@ p {
   height: 20px;
   width: 20px;
   position: absolute;
-  left: 30px;
+  right: 30px;
 }
 
 [dir="ltr"] .help-subtitle {

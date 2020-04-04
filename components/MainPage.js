@@ -147,11 +147,19 @@ const COUPENS = [
   }
 ]
 
+
 class MainPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      DISCLAIMER: [
+        { title: props.t('descTitle1'), detail: props.t('descDetail1') },
+        { title: props.t('descTitle2'), detail: props.t('descDetail2') },
+        { title: props.t('descTitle3'), detail: props.t('descDetail3') },
+        { title: props.t('descTitle4'), detail: props.t('descDetail4') },
+        { title: props.t('descTitle5'), detail: props.t('descDetail5') },
+        { title: props.t('descTitle6'), detail: props.t('descDetail6') },
+      ]
     }
   }
 
@@ -198,6 +206,7 @@ class MainPage extends Component {
           {this.renderCoupens()}
           {this.renderFoundByDealbabProducts()}
           {this.renderMostPopularProducts()}
+          {this.renderDisclaimerSection()}
         </div>
       </Container>
     )
@@ -301,6 +310,44 @@ class MainPage extends Component {
             )
           })}
         </Row>
+      </div>
+    )
+  }
+
+  renderDisclaimerSection = () => {
+    const { DISCLAIMER } = this.state
+    const { t } = this.props
+
+    return (
+      <div className="disclaimer-container">
+        {/* {DISCLAIMER.map((item, index) => {
+          return ( */}
+        <div>
+          <p className="disclaimer-title">{t('descTitle1')}</p>
+          <p className="disclaimer-detail">{t('descDetail1')}</p>
+        </div>
+        <div>
+          <p className="disclaimer-title">{t('descTitle2')}</p>
+          <p className="disclaimer-detail">{t('descDetail2')}</p>
+        </div>
+        <div>
+          <p className="disclaimer-title">{t('descTitle3')}</p>
+          <p className="disclaimer-detail">{t('descDetail3')}</p>
+        </div>
+        <div>
+          <p className="disclaimer-title">{t('descTitle4')}</p>
+          <p className="disclaimer-detail">{t('descDetail4')}</p>
+        </div>
+        <div>
+          <p className="disclaimer-title">{t('descTitle5')}</p>
+          <p className="disclaimer-detail">{t('descDetail5')}</p>
+        </div>
+        <div>
+          <p className="disclaimer-title">{t('descTitle6')}</p>
+          <p className="disclaimer-detail">{t('descDetail6')}</p>
+        </div>
+        {/* )
+        })} */}
       </div>
     )
   }

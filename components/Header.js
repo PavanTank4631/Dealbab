@@ -69,14 +69,13 @@ class Header extends Component {
                 </div>
               </div>
               <p className="favourite-text">{t('fav')}</p>
-              <div id="lng">
-                <img src="/static/images/en.png" alt="404!" className="lng-icon" />
-                <p className="lng-text">en-US</p>
+              <div id="lng" onClick={this.props.manageLanguage}>
+                <img src={this.props.flagUrl} alt="404!" className="lng-icon" />
+                <p className="lng-text">{!this.props.isArabic ? 'عربى' : 'English'}</p>
               </div>
             </Row>
           </Container>
         </div>
-
         {this.renderSubHeader()}
       </div>
     )
@@ -117,25 +116,53 @@ class Header extends Component {
             <FaSearch className="search-icon" />
           </Button>
         </InputGroupAddon>
-      </InputGroup>
+      </InputGroup >
     )
   }
 
   renderSubHeader = () => {
     const { CATEGORIES } = this.state
+    const { t } = this.props
 
     return (
       <div id="sub-header">
         <Container fluid className="spacing">
           <Row>
             <ul>
-              {CATEGORIES.map((item, index) => {
-                return (
-                  <li key={item.toString()} className="categories" >
-                    <a href="#">{item.title}</a>
-                  </li>
-                )
-              })}
+              {/* {CATEGORIES.map((item, index) => {
+                return ( */}
+              <li className="categories" >
+                <a href="#">{t('all-category')}</a>
+              </li>
+              <li className="categories" >
+                <a href="#">{t('category1')}</a>
+              </li>
+              <li className="categories" >
+                <a href="#">{t('category2')}</a>
+              </li>
+              <li className="categories" >
+                <a href="#">{t('category3')}</a>
+              </li>
+              <li className="categories" >
+                <a href="#">{t('category4')}</a>
+              </li>
+              <li className="categories" >
+                <a href="#">{t('category5')}</a>
+              </li>
+              <li className="categories" >
+                <a href="#">{t('category6')}</a>
+              </li>
+              <li className="categories" >
+                <a href="#">{t('category7')}</a>
+              </li>
+              <li className="categories" >
+                <a href="#">{t('category8')}</a>
+              </li>
+              <li className="categories" >
+                <a href="#">{t('category9')}</a>
+              </li>
+              {/* )
+              })} */}
             </ul>
           </Row>
         </Container>
