@@ -7,6 +7,7 @@ import { i18n, Link, withTranslation } from '../i18n'
 //file imports
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import MainPage from '../components/MainPage'
 
 class Homepage extends Component {
   constructor(props) {
@@ -22,7 +23,8 @@ class Homepage extends Component {
 
     return (
       <html dir={isArabic ? "rtl" : "ltr"}>
-        <Header title={t('h1')} />
+        <Header isArabic={isArabic} />
+        <MainPage />
         <Footer />
       </html>
     )
@@ -30,7 +32,7 @@ class Homepage extends Component {
 }
 
 Homepage.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'footer'],
+  namespacesRequired: ['common', 'footer', 'header'],
 })
 
 Homepage.propTypes = {

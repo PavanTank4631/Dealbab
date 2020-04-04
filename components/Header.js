@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
+import { withTranslation } from '../i18n'
+
 
 //styling
 import {
-  Container, Row, InputGroup, InputGroupAddon, Input, Button
+  Container, Row, InputGroup, InputGroupAddon, Input, Button, Col
 } from 'reactstrap';
 
 //icons & colors
@@ -13,31 +15,31 @@ import { IoIosMenu } from 'react-icons/io'
 import { FaSearch } from 'react-icons/fa'
 import { COLORS } from '../Helper/Constants'
 
-const CATEGORIES = [
-  { title: 'All Categories' },
-  { title: 'Supermarket' },
-  { title: 'Mobiles & Tablets' },
-  { title: 'Electronics' },
-  { title: 'Home' },
-  { title: 'Beauty' },
-  { title: 'Baby' },
-  { title: 'Toys' },
-  { title: 'Sports' },
-  { title: 'Brand' },
-]
-
 
 class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
       dropdownOpen: false,
-      favIndex: 0
+      favIndex: 0,
+      CATEGORIES: [
+        { title: props.t('all-category') },
+        { title: props.t('category1') },
+        { title: props.t('category2') },
+        { title: props.t('category3') },
+        { title: props.t('category4') },
+        { title: props.t('category5') },
+        { title: props.t('category6') },
+        { title: props.t('category7') },
+        { title: props.t('category8') },
+        { title: props.t('category9') },
+      ]
     }
   }
 
   render() {
-    const { favIndex } = this.state
+    const { favIndex } = this.state;
+    const { t } = this.props
 
     return (
       <div className="header-container">
@@ -49,16 +51,16 @@ class Header extends Component {
         </Head>
 
         <div id="main-header">
-          <Container>
+          <Container fluid className="spacing">
             <Row>
               <IoIosMenu color={COLORS.BLACK} className="menu-icon" />
               <div>
                 <p id="title">Dealbab</p>
-                <p id="sub-title">Explore more</p>
+                <p id="sub-title">{t('explore-more')}</p>
               </div>
               {this.renderSearchBar()}
               <div className="login-section">
-                <p className="login">Log In</p>
+                <p className="login">{t('login')}</p>
               </div>
               <div className="favourite-deal">
                 <div>
@@ -66,7 +68,7 @@ class Header extends Component {
                   <p className="fav-index">{favIndex}</p>
                 </div>
               </div>
-              <p className="favourite-text">Favourites</p>
+              <p className="favourite-text">{t('fav')}</p>
               <div id="lng">
                 <img src="/static/images/en.png" alt="404!" className="lng-icon" />
                 <p className="lng-text">en-US</p>
@@ -105,10 +107,12 @@ class Header extends Component {
   */
 
   renderSearchBar = () => {
+    const { t } = this.props
+
     return (
       <InputGroup id="search-bar">
-        <Input placeholder="What are you looking for?" className="search-input" />
-        <InputGroupAddon addonType="append">
+        <Input placeholder={t('search-placeholder')} className="search-input" />
+        <InputGroupAddon addonType={this.props.isArabic ? "prepend" : "append"}>
           <Button className="search-button">
             <FaSearch className="search-icon" />
           </Button>
@@ -118,19 +122,24 @@ class Header extends Component {
   }
 
   renderSubHeader = () => {
+    const { CATEGORIES } = this.state
+
     return (
       <div id="sub-header">
-        <Container>
+        <Container fluid className="spacing">
           <Row>
-            <ul>
-              {CATEGORIES.map((item, index) => {
-                return (
-                  <li className="categories" >
-                    <a href="#">{item.title}</a>
-                  </li>
-                )
-              })}
-            </ul>
+            <Col lg={3}></Col>
+            <Col lg={9}>
+              <ul>
+                {CATEGORIES.map((item, index) => {
+                  return (
+                    <li key={item.toString()} className="categories" >
+                      <a href="#">{item.title}</a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </Col>
           </Row>
         </Container>
       </div>
@@ -139,7 +148,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
 }
 
-export default Header
+export default withTranslation('header')(Header)

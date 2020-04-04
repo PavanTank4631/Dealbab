@@ -10,44 +10,48 @@ import { Container, Row, Col } from 'reactstrap'
 //icons & colors
 import { FaRegQuestionCircle } from 'react-icons/fa'
 
-const SERVICES = [
-  { name: 'About Us' },
-  { name: 'Media Centers' },
-  { name: 'Contact Us' },
-  { name: 'Terms & Conditions' },
-  { name: 'Privacy Policy' },
-]
-
-const POPULAR_SEARCHES = [
-  { name: "Watches" },
-  { name: "Macbook Air" },
-  { name: "Shoes" },
-  { name: "TV" },
-  { name: "Mobiles" },
-  { name: "Mobile Accessories" },
-  { name: "Men's Fashion" },
-  { name: "Women's Fashion" },
-  { name: "Home Appliances" },
-  { name: "Makeup" },
-]
-
-const ACCOUNT_DETAIL = [
-  { name: 'Log In' },
-  { name: 'Register' },
-  { name: 'My Favourites' },
-  { name: 'Account Settings' },
-  { name: 'Account Summary' },
-]
-
-const SOCIAL_LOGOES = [
-  { img: "/static/images/twitter.png" },
-  { img: "/static/images/facebook.png" },
-  { img: "/static/images/youtube.png" },
-  { img: "/static/images/instagram.png" },
-  { img: "/static/images/pinterest.png" },
-]
-
 class Footer extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      SERVICES: [
+        { name: props.t('about-us') },
+        { name: props.t('media-centers') },
+        { name: props.t('contact-us') },
+        { name: props.t('terms') },
+        { name: props.t('privacy') },
+      ],
+      POPULAR_SEARCHES: [
+        { name: props.t('category1') },
+        { name: props.t('category2') },
+        { name: props.t('category3') },
+        { name: props.t('category4') },
+        { name: props.t('category5') },
+        { name: props.t('category6') },
+        { name: props.t('category7') },
+        { name: props.t('category8') },
+        { name: props.t('category9') },
+        { name: props.t('category10') },
+
+      ],
+      ACCOUNT_DETAIL: [
+        { name: props.t('login') },
+        { name: props.t('register') },
+        { name: props.t('my-fav') },
+        { name: props.t('account-settings') },
+        { name: props.t('account-summary') },
+      ],
+      SOCIAL_LOGOES: [
+        { img: "/static/images/twitter.png" },
+        { img: "/static/images/facebook.png" },
+        { img: "/static/images/youtube.png" },
+        { img: "/static/images/instagram.png" },
+        { img: "/static/images/pinterest.png" },
+      ]
+    }
+  }
+
   render() {
     return (
       <footer className="footer-container">
@@ -58,14 +62,17 @@ class Footer extends Component {
   }
 
   renderFirstFooterContainer = () => {
+    const { SERVICES, POPULAR_SEARCHES, ACCOUNT_DETAIL, SOCIAL_LOGOES } = this.state
+    const { t } = this.props
+
     return (
       <div className="first-footer">
-        <Container>
+        <Container fluid className="spacing">
           <Row>
             <Col lg={3} md={6} sm={12} className="column">
               <div className="logo-col">
                 <p id="title">Dealbab</p>
-                <p id="sub-title">Explore more</p>
+                <p id="sub-title">{t('explore-more')}</p>
               </div>
               {SERVICES.map((item, index) => {
                 return (
@@ -74,7 +81,7 @@ class Footer extends Component {
               })}
             </Col>
             <Col lg={3} md={6} sm={12} className="column">
-              <h5 className="col-title">popular searches</h5>
+              <h5 className="col-title">{t('popular-search')}</h5>
               {POPULAR_SEARCHES.map((item, index) => {
                 return (
                   <p className="col-items">{item.name}</p>
@@ -82,22 +89,22 @@ class Footer extends Component {
               })}
             </Col>
             <Col lg={3} md={6} sm={12} className="column">
-              <h5 className="col-title">my account</h5>
+              <h5 className="col-title">{t('my-account')}</h5>
               {ACCOUNT_DETAIL.map((item, index) => {
                 return (
                   <p className="col-items">{item.name}</p>
                 )
               })}
-              <h5 className="col-title col-semi-title">intellectual property</h5>
-              <p className="col-items">Brand and Copyright Owners</p>
-              <p className="col-items">Marketplace Sellers</p>
+              <h5 className="col-title col-semi-title">{t('intellectual-property')}</h5>
+              <p className="col-items">{t('brand-owners')}</p>
+              <p className="col-items">{t('market-sellers')}</p>
             </Col>
             <Col lg={3} md={6} sm={12} className="column">
               <div className="help-container">
-                <p className="help-title">help center<FaRegQuestionCircle className="help-icon" /></p>
-                <p className="help-subtitle">Have you any question or issue? We are always here for you.</p>
+                <p className="help-title">{t('help-title')}<FaRegQuestionCircle className="help-icon" /></p>
+                <p className="help-subtitle">{t('help-tagline')}</p>
               </div>
-              <h5 className="col-title">follow us on</h5>
+              <h5 className="col-title">{t('follow-us')}</h5>
               {SOCIAL_LOGOES.map((item, index) => {
                 return (
                   <a href="#">
@@ -115,7 +122,7 @@ class Footer extends Component {
   renderSecondFooterContainer = () => {
     return (
       <div className="second-footer">
-        <Container>
+        <Container fluid className="spacing">
           <p className="copyright">&copy; 2020 Dealbab.com </p>
         </Container>
       </div>

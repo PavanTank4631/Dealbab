@@ -145,69 +145,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  //icons & colors
 
 
-const SERVICES = [{
-  name: 'About Us'
-}, {
-  name: 'Media Centers'
-}, {
-  name: 'Contact Us'
-}, {
-  name: 'Terms & Conditions'
-}, {
-  name: 'Privacy Policy'
-}];
-const POPULAR_SEARCHES = [{
-  name: "Watches"
-}, {
-  name: "Macbook Air"
-}, {
-  name: "Shoes"
-}, {
-  name: "TV"
-}, {
-  name: "Mobiles"
-}, {
-  name: "Mobile Accessories"
-}, {
-  name: "Men's Fashion"
-}, {
-  name: "Women's Fashion"
-}, {
-  name: "Home Appliances"
-}, {
-  name: "Makeup"
-}];
-const ACCOUNT_DETAIL = [{
-  name: 'Log In'
-}, {
-  name: 'Register'
-}, {
-  name: 'My Favourites'
-}, {
-  name: 'Account Settings'
-}, {
-  name: 'Account Summary'
-}];
-const SOCIAL_LOGOES = [{
-  img: "/static/images/twitter.png"
-}, {
-  img: "/static/images/facebook.png"
-}, {
-  img: "/static/images/youtube.png"
-}, {
-  img: "/static/images/instagram.png"
-}, {
-  img: "/static/images/pinterest.png"
-}];
 
 class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-  constructor(...args) {
-    super(...args);
+  constructor(props) {
+    super(props);
 
     _defineProperty(this, "renderFirstFooterContainer", () => {
+      const {
+        SERVICES,
+        POPULAR_SEARCHES,
+        ACCOUNT_DETAIL,
+        SOCIAL_LOGOES
+      } = this.state;
+      const {
+        t
+      } = this.props;
       return __jsx("div", {
         className: "first-footer"
-      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
+        fluid: true,
+        className: "spacing"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
         lg: 3,
         md: 6,
         sm: 12,
@@ -218,7 +176,7 @@ class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         id: "title"
       }, "Dealbab"), __jsx("p", {
         id: "sub-title"
-      }, "Explore more")), SERVICES.map((item, index) => {
+      }, t('explore-more'))), SERVICES.map((item, index) => {
         return __jsx("a", {
           href: "#",
           className: "col-items-service"
@@ -230,7 +188,7 @@ class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         className: "column"
       }, __jsx("h5", {
         className: "col-title"
-      }, "popular searches"), POPULAR_SEARCHES.map((item, index) => {
+      }, t('popular-search')), POPULAR_SEARCHES.map((item, index) => {
         return __jsx("p", {
           className: "col-items"
         }, item.name);
@@ -241,17 +199,17 @@ class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         className: "column"
       }, __jsx("h5", {
         className: "col-title"
-      }, "my account"), ACCOUNT_DETAIL.map((item, index) => {
+      }, t('my-account')), ACCOUNT_DETAIL.map((item, index) => {
         return __jsx("p", {
           className: "col-items"
         }, item.name);
       }), __jsx("h5", {
         className: "col-title col-semi-title"
-      }, "intellectual property"), __jsx("p", {
+      }, t('intellectual-property')), __jsx("p", {
         className: "col-items"
-      }, "Brand and Copyright Owners"), __jsx("p", {
+      }, t('brand-owners')), __jsx("p", {
         className: "col-items"
-      }, "Marketplace Sellers")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+      }, t('market-sellers'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
         lg: 3,
         md: 6,
         sm: 12,
@@ -260,13 +218,13 @@ class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         className: "help-container"
       }, __jsx("p", {
         className: "help-title"
-      }, "help center", __jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__["FaRegQuestionCircle"], {
+      }, t('help-title'), __jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__["FaRegQuestionCircle"], {
         className: "help-icon"
       })), __jsx("p", {
         className: "help-subtitle"
-      }, "Have you any question or issue? We are always here for you.")), __jsx("h5", {
+      }, t('help-tagline'))), __jsx("h5", {
         className: "col-title"
-      }, "follow us on"), SOCIAL_LOGOES.map((item, index) => {
+      }, t('follow-us')), SOCIAL_LOGOES.map((item, index) => {
         return __jsx("a", {
           href: "#"
         }, __jsx("img", {
@@ -280,10 +238,70 @@ class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     _defineProperty(this, "renderSecondFooterContainer", () => {
       return __jsx("div", {
         className: "second-footer"
-      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], null, __jsx("p", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
+        fluid: true,
+        className: "spacing"
+      }, __jsx("p", {
         className: "copyright"
       }, "\xA9 2020 Dealbab.com ")));
     });
+
+    this.state = {
+      SERVICES: [{
+        name: props.t('about-us')
+      }, {
+        name: props.t('media-centers')
+      }, {
+        name: props.t('contact-us')
+      }, {
+        name: props.t('terms')
+      }, {
+        name: props.t('privacy')
+      }],
+      POPULAR_SEARCHES: [{
+        name: props.t('category1')
+      }, {
+        name: props.t('category2')
+      }, {
+        name: props.t('category3')
+      }, {
+        name: props.t('category4')
+      }, {
+        name: props.t('category5')
+      }, {
+        name: props.t('category6')
+      }, {
+        name: props.t('category7')
+      }, {
+        name: props.t('category8')
+      }, {
+        name: props.t('category9')
+      }, {
+        name: props.t('category10')
+      }],
+      ACCOUNT_DETAIL: [{
+        name: props.t('login')
+      }, {
+        name: props.t('register')
+      }, {
+        name: props.t('my-fav')
+      }, {
+        name: props.t('account-settings')
+      }, {
+        name: props.t('account-summary')
+      }],
+      SOCIAL_LOGOES: [{
+        img: "/static/images/twitter.png"
+      }, {
+        img: "/static/images/facebook.png"
+      }, {
+        img: "/static/images/youtube.png"
+      }, {
+        img: "/static/images/instagram.png"
+      }, {
+        img: "/static/images/pinterest.png"
+      }]
+    };
   }
 
   render() {
@@ -316,18 +334,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/head */ "next/head");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_icons_gi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/gi */ "react-icons/gi");
-/* harmony import */ var react_icons_gi__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_icons_gi__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/io */ "react-icons/io");
-/* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_icons_io__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _Helper_Constants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Helper/Constants */ "./Helper/Constants.js");
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../i18n */ "./i18n.js");
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_icons_gi__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/gi */ "react-icons/gi");
+/* harmony import */ var react_icons_gi__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_icons_gi__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/io */ "react-icons/io");
+/* harmony import */ var react_icons_io__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_icons_io__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _Helper_Constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Helper/Constants */ "./Helper/Constants.js");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -339,27 +360,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-const CATEGORIES = [{
-  title: 'All Categories'
-}, {
-  title: 'Supermarket'
-}, {
-  title: 'Mobiles & Tablets'
-}, {
-  title: 'Electronics'
-}, {
-  title: 'Home'
-}, {
-  title: 'Beauty'
-}, {
-  title: 'Baby'
-}, {
-  title: 'Toys'
-}, {
-  title: 'Sports'
-}, {
-  title: 'Brand'
-}];
 
 class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
@@ -372,35 +372,70 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     });
 
     _defineProperty(this, "renderSearchBar", () => {
-      return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroup"], {
+      const {
+        t
+      } = this.props;
+      return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["InputGroup"], {
         id: "search-bar"
-      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
-        placeholder: "What are you looking for?",
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Input"], {
+        placeholder: t('search-placeholder'),
         className: "search-input"
-      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroupAddon"], {
-        addonType: "append"
-      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["InputGroupAddon"], {
+        addonType: this.props.isArabic ? "prepend" : "append"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
         className: "search-button"
-      }, __jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__["FaSearch"], {
+      }, __jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_7__["FaSearch"], {
         className: "search-icon"
       }))));
     });
 
     _defineProperty(this, "renderSubHeader", () => {
+      const {
+        CATEGORIES
+      } = this.state;
       return __jsx("div", {
         id: "sub-header"
-      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, __jsx("ul", null, CATEGORIES.map((item, index) => {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
+        fluid: true,
+        className: "spacing"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+        lg: 3
+      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+        lg: 9
+      }, __jsx("ul", null, CATEGORIES.map((item, index) => {
         return __jsx("li", {
+          key: item.toString(),
           className: "categories"
         }, __jsx("a", {
           href: "#"
         }, item.title));
-      })))));
+      }))))));
     });
 
     this.state = {
       dropdownOpen: false,
-      favIndex: 0
+      favIndex: 0,
+      CATEGORIES: [{
+        title: props.t('all-category')
+      }, {
+        title: props.t('category1')
+      }, {
+        title: props.t('category2')
+      }, {
+        title: props.t('category3')
+      }, {
+        title: props.t('category4')
+      }, {
+        title: props.t('category5')
+      }, {
+        title: props.t('category6')
+      }, {
+        title: props.t('category7')
+      }, {
+        title: props.t('category8')
+      }, {
+        title: props.t('category9')
+      }]
     };
   }
 
@@ -408,6 +443,9 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     const {
       favIndex
     } = this.state;
+    const {
+      t
+    } = this.props;
     return __jsx("div", {
       className: "header-container"
     }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx("title", null, "Dealbab"), __jsx("link", {
@@ -421,18 +459,21 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       rel: "stylesheet"
     })), __jsx("div", {
       id: "main-header"
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, __jsx(react_icons_io__WEBPACK_IMPORTED_MODULE_5__["IoIosMenu"], {
-      color: _Helper_Constants__WEBPACK_IMPORTED_MODULE_7__["COLORS"].BLACK,
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
+      fluid: true,
+      className: "spacing"
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(react_icons_io__WEBPACK_IMPORTED_MODULE_6__["IoIosMenu"], {
+      color: _Helper_Constants__WEBPACK_IMPORTED_MODULE_8__["COLORS"].BLACK,
       className: "menu-icon"
     }), __jsx("div", null, __jsx("p", {
       id: "title"
     }, "Dealbab"), __jsx("p", {
       id: "sub-title"
-    }, "Explore more")), this.renderSearchBar(), __jsx("div", {
+    }, t('explore-more'))), this.renderSearchBar(), __jsx("div", {
       className: "login-section"
     }, __jsx("p", {
       className: "login"
-    }, "Log In")), __jsx("div", {
+    }, t('login'))), __jsx("div", {
       className: "favourite-deal"
     }, __jsx("div", null, __jsx("img", {
       src: "/static/images/like.png",
@@ -442,7 +483,7 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       className: "fav-index"
     }, favIndex))), __jsx("p", {
       className: "favourite-text"
-    }, "Favourites"), __jsx("div", {
+    }, t('fav')), __jsx("div", {
       id: "lng"
     }, __jsx("img", {
       src: "/static/images/en.png",
@@ -466,9 +507,97 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 }
 
 Header.propTypes = {
-  title: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
+  t: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
 };
-/* harmony default export */ __webpack_exports__["default"] = (Header);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_i18n__WEBPACK_IMPORTED_MODULE_3__["withTranslation"])('header')(Header));
+
+/***/ }),
+
+/***/ "./components/MainPage.js":
+/*!********************************!*\
+  !*** ./components/MainPage.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../i18n */ "./i18n.js");
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Helper_Constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Helper/Constants */ "./Helper/Constants.js");
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+ //styling
+
+ //icons & colors
+
+
+
+
+class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "_toggleDropDown", () => {
+      this.setState({
+        dropdownOpen: !this.state.dropdownOpen
+      });
+    });
+
+    this.state = {};
+  }
+
+  render() {
+    const {
+      favIndex
+    } = this.state;
+    const {
+      t
+    } = this.props;
+    return __jsx("div", null, "hello");
+  }
+  /*
+  .##........#######...######...####..######...######.
+  .##.......##.....##.##....##...##..##....##.##....##
+  .##.......##.....##.##.........##..##.......##......
+  .##.......##.....##.##...####..##..##........######.
+  .##.......##.....##.##....##...##..##.............##
+  .##.......##.....##.##....##...##..##....##.##....##
+  .########..#######...######...####..######...######.
+  */
+
+  /*
+  ..######...#######..##.....##.########...#######..##....##.########.##....##.########..######.
+  .##....##.##.....##.###...###.##.....##.##.....##.###...##.##.......###...##....##....##....##
+  .##.......##.....##.####.####.##.....##.##.....##.####..##.##.......####..##....##....##......
+  .##.......##.....##.##.###.##.########..##.....##.##.##.##.######...##.##.##....##.....######.
+  .##.......##.....##.##.....##.##........##.....##.##..####.##.......##..####....##..........##
+  .##....##.##.....##.##.....##.##........##.....##.##...###.##.......##...###....##....##....##
+  ..######...#######..##.....##.##.........#######..##....##.########.##....##....##.....######.
+  */
+
+
+}
+
+MainPage.propTypes = {
+  t: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(_i18n__WEBPACK_IMPORTED_MODULE_3__["withTranslation"])('mainpage')(MainPage));
 
 /***/ }),
 
@@ -530,11 +659,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Header */ "./components/Header.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Footer */ "./components/Footer.js");
+/* harmony import */ var _components_MainPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/MainPage */ "./components/MainPage.js");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
  //i18n
 
  //file imports
+
 
 
 
@@ -557,14 +688,14 @@ class Homepage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("html", {
       dir: isArabic ? "rtl" : "ltr"
     }, __jsx(_components_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      title: t('h1')
-    }), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+      isArabic: isArabic
+    }), __jsx(_components_MainPage__WEBPACK_IMPORTED_MODULE_5__["default"], null), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
   }
 
 }
 
 Homepage.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'footer']
+  namespacesRequired: ['common', 'footer', 'header']
 });
 
 Homepage.propTypes = {
@@ -581,7 +712,7 @@ Homepage.propTypes = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/ravi/Desktop/Dealbab/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! C:\Users\PAVAN TANK\Desktop\New folder\Dealbab\pages\index.js */"./pages/index.js");
 
 
 /***/ }),
