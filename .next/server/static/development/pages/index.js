@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -738,7 +738,9 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       return __jsx("div", null, __jsx("h3", {
         className: "section-title"
       }, t('featured-products')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, FEATURED_PRODUCTS.map((item, index) => {
-        return __jsx("div", {
+        return __jsx("a", {
+          className: "product-link"
+        }, __jsx("div", {
           className: "product-container"
         }, __jsx("div", {
           className: "product-semicontainer"
@@ -753,7 +755,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
           className: "deal-button"
         }, __jsx("p", {
           className: "button-text"
-        }, "check deal")));
+        }, "check deal"))));
       })));
     });
 
@@ -1042,7 +1044,7 @@ Homepage.propTypes = {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

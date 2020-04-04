@@ -221,16 +221,18 @@ class MainPage extends Component {
         <Row>
           {FEATURED_PRODUCTS.map((item, index) => {
             return (
-              <div className="product-container">
-                <div className="product-semicontainer">
-                  <img src={item.img} className="product-img" />
-                  <p className="product-title">{item.title}</p>
-                  <p className="product-subtitle">deals from 4 shops</p>
+              <a className="product-link">
+                <div className="product-container">
+                  <div className="product-semicontainer">
+                    <img src={item.img} className="product-img" />
+                    <p className="product-title">{item.title}</p>
+                    <p className="product-subtitle">deals from 4 shops</p>
+                  </div>
+                  <div className="deal-button">
+                    <p className="button-text">check deal</p>
+                  </div>
                 </div>
-                <div className="deal-button">
-                  <p className="button-text">check deal</p>
-                </div>
-              </div>
+              </a>
             )
           })}
         </Row>

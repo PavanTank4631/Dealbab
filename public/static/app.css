@@ -120,8 +120,11 @@ p {
 }
 
 .spacing {
-  padding-right: 300px !important;
-  padding-left: 300px !important;
+  /* padding-right: 300px !important;
+  padding-left: 300px !important; */
+  width: 100% !important;
+  max-width: 1356px !important;
+  margin: auto !important;
 }
 
 #main-header {
@@ -322,7 +325,7 @@ p {
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px 20px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5); */
 }
 
 .section-title {
@@ -356,21 +359,48 @@ p {
   height: 180px;
 }
 
-.product-title {
+.product-link :hover {
+  text-decoration: none;
+}
+
+[dir="ltr"] .product-title {
   margin: 0;
   margin-top: 20px;
   font-size: 15px;
   font-family: var(--body-fonts);
   color: var(--header1-text-color);
   font-weight: 600;
+  max-height: 45px;
+  overflow: hidden;
 }
 
-.product-subtitle {
+[dir="rtl"] .product-title {
+  margin: 0;
+  margin-top: 20px;
+  font-size: 15px;
+  font-family: var(--body-fonts);
+  color: var(--header1-text-color);
+  font-weight: 600;
+  text-align: right;
+  max-height: 45px;
+  overflow: hidden;
+}
+
+[dir="ltr"] .product-subtitle {
   margin: 0;
   margin-top: 5px;
   font-size: 13px;
   color: var(--header1-text-color);
   font-family: var(--body-fonts);
+}
+
+[dir="rtl"] .product-subtitle {
+  margin: 0;
+  margin-top: 5px;
+  font-size: 13px;
+  color: var(--header1-text-color);
+  font-family: var(--body-fonts);
+  text-align: right;
 }
 
 .deal-button {
