@@ -257,12 +257,12 @@ class MainPage extends Component {
     return (
       <Container fluid className="spacing">
         <Row>
-          <Col lg={3} md={6} sm={12}>
+          <Col lg={3} md={0} sm={0} className="side-bar-col">
             <div id="side-bar">
               {this.renderLeftComponent()}
             </div>
           </Col>
-          <Col lg={9} md={6} sm={12}>
+          <Col lg={9} md={6} sm={12} className="main-col">
             {this.renderCarousel()}
             <div className="products-section">
               {this.renderFeaturedProducts()}

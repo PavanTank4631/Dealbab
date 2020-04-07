@@ -777,14 +777,16 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         className: "spacing"
       }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
         lg: 3,
-        md: 6,
-        sm: 12
+        md: 0,
+        sm: 0,
+        className: "side-bar-col"
       }, __jsx("div", {
         id: "side-bar"
       }, this.renderLeftComponent())), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
         lg: 9,
         md: 6,
-        sm: 12
+        sm: 12,
+        className: "main-col"
       }, this.renderCarousel(), __jsx("div", {
         className: "products-section"
       }, this.renderFeaturedProducts(), this.renderCoupens(), this.renderFoundByDealbabProducts(), this.renderMostPopularProducts(), this.renderDisclaimerSection()))));
