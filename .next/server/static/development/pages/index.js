@@ -403,6 +403,12 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       });
     });
 
+    _defineProperty(this, "_toggleNavbar", () => {
+      this.setState({
+        isCollapse: !this.state.isCollapse
+      });
+    });
+
     _defineProperty(this, "renderSearchBar", () => {
       const {
         t
@@ -423,7 +429,7 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
     _defineProperty(this, "renderSubHeader", () => {
       const {
-        CATEGORIES
+        isCollapse
       } = this.state;
       const {
         t
@@ -433,47 +439,58 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
         fluid: true,
         className: "spacing"
-      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx("ul", null, __jsx("li", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Navbar"], {
+        expand: "lg",
+        id: "sub-header-navbar"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavbarBrand"], {
         className: "categories"
-      }, __jsx("a", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
         href: "#"
-      }, t('all-category'))), __jsx("li", {
+      }, t('all-category'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavbarToggler"], {
+        onClick: this._toggleNavbar
+      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Collapse"], {
+        isOpen: isCollapse,
+        navbar: true
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Nav"], {
+        className: "mr-auto",
+        navbar: true
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
         className: "categories"
-      }, __jsx("a", {
-        href: "#"
-      }, t('category1'))), __jsx("li", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
+        href: "/components/"
+      }, t('category1'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
         className: "categories"
-      }, __jsx("a", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
         href: "#"
-      }, t('category2'))), __jsx("li", {
+      }, t('category2'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
         className: "categories"
-      }, __jsx("a", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
         href: "#"
-      }, t('category3'))), __jsx("li", {
+      }, t('category3'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
         className: "categories"
-      }, __jsx("a", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
         href: "#"
-      }, t('category4'))), __jsx("li", {
+      }, t('category4'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
         className: "categories"
-      }, __jsx("a", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
         href: "#"
-      }, t('category5'))), __jsx("li", {
+      }, t('category5'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
         className: "categories"
-      }, __jsx("a", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
         href: "#"
-      }, t('category6'))), __jsx("li", {
+      }, t('category6'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
         className: "categories"
-      }, __jsx("a", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
         href: "#"
-      }, t('category7'))), __jsx("li", {
+      }, t('category7'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
         className: "categories"
-      }, __jsx("a", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
         href: "#"
-      }, t('category8'))), __jsx("li", {
+      }, t('category8'))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
         className: "categories"
-      }, __jsx("a", {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
         href: "#"
-      }, t('category9')))))));
+      }, t('category9'))))))));
     });
 
     this.state = {
@@ -499,7 +516,8 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         title: props.t('category8')
       }, {
         title: props.t('category9')
-      }]
+      }],
+      isCollapse: false
     };
   }
 
@@ -529,11 +547,11 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(react_icons_io__WEBPACK_IMPORTED_MODULE_6__["IoIosMenu"], {
       color: _Helper_Constants__WEBPACK_IMPORTED_MODULE_8__["COLORS"].BLACK,
       className: "menu-icon"
-    }), __jsx("div", null, __jsx("p", {
-      id: "title"
-    }, "Dealbab"), __jsx("p", {
-      id: "sub-title"
-    }, t('explore-more'))), this.renderSearchBar(), __jsx("div", {
+    }), __jsx("img", {
+      src: "/static/images/logo.jpg",
+      alt: "404!",
+      className: "brand-logo"
+    }), this.renderSearchBar(), __jsx("div", {
       className: "login-section"
     }, __jsx("p", {
       className: "login"
@@ -722,13 +740,120 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       });
     });
 
+    _defineProperty(this, "_next", () => {
+      const {
+        animating,
+        activeIndex
+      } = this.state;
+      if (animating) return;
+      const nextIndex = activeIndex === this.state.CAROUSEL_DATA.length - 1 ? 0 : activeIndex + 1;
+      this.setState({
+        activeIndex: nextIndex
+      });
+    });
+
+    _defineProperty(this, "_previous", () => {
+      const {
+        animating,
+        activeIndex
+      } = this.state;
+      if (animating) return;
+      const previousIndex = activeIndex === 0 ? this.state.CAROUSEL_DATA.length - 1 : activeIndex - 1;
+      this.setState({
+        activeIndex: previousIndex
+      });
+    });
+
+    _defineProperty(this, "_goToIndex", newIndex => {
+      if (this.state.animating) return;
+      this.setState({
+        activeIndex: newIndex
+      });
+    });
+
     _defineProperty(this, "renderBodyContainer", () => {
       return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
         fluid: true,
         className: "spacing"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+        lg: 3,
+        md: 6,
+        sm: 12
       }, __jsx("div", {
+        id: "side-bar"
+      }, this.renderLeftComponent())), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+        lg: 9,
+        md: 6,
+        sm: 12
+      }, this.renderCarousel(), __jsx("div", {
         className: "products-section"
-      }, this.renderFeaturedProducts(), this.renderCoupens(), this.renderFoundByDealbabProducts(), this.renderMostPopularProducts(), this.renderDisclaimerSection()));
+      }, this.renderFeaturedProducts(), this.renderCoupens(), this.renderFoundByDealbabProducts(), this.renderMostPopularProducts(), this.renderDisclaimerSection()))));
+    });
+
+    _defineProperty(this, "renderLeftComponent", () => {
+      const {
+        CATEGORIES,
+        POPULAR_SEARCHES
+      } = this.state;
+      const {
+        t
+      } = this.props;
+      return __jsx("div", null, this.renderSideBarSection(CATEGORIES, t('top-category')), this.renderSideBarSection(POPULAR_SEARCHES, t('top-vendors')), this.renderSideBarSection(CATEGORIES, t('popular-searches')));
+    });
+
+    _defineProperty(this, "renderSideBarSection", (data, title) => {
+      const {
+        t
+      } = this.props;
+      return __jsx("div", {
+        className: "side-bar-section"
+      }, __jsx("h3", {
+        className: "section-title"
+      }, title), data.map((item, index) => {
+        return __jsx("div", {
+          key: item.toString()
+        }, __jsx("p", {
+          className: "sidebar-items"
+        }, item.title));
+      }));
+    });
+
+    _defineProperty(this, "renderCarousel", () => {
+      const {
+        activeIndex,
+        CAROUSEL_DATA
+      } = this.state;
+      return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Carousel"], {
+        activeIndex: activeIndex,
+        next: this._next,
+        previous: this._previous,
+        className: "carousel"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CarouselIndicators"], {
+        items: CAROUSEL_DATA,
+        activeIndex: activeIndex,
+        onClickHandler: this._goToIndex
+      }), CAROUSEL_DATA.map((item, index) => {
+        return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CarouselItem"], {
+          onExiting: () => this.setState({
+            animating: true
+          }),
+          onExited: () => this.setState({
+            animating: false
+          })
+        }, __jsx("img", {
+          src: item.img,
+          alt: "404!",
+          className: "carousel-img"
+        }));
+      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CarouselControl"], {
+        direction: "prev",
+        directionText: "Previous",
+        onClickHandler: this._previous
+      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CarouselControl"], {
+        direction: "next",
+        directionText: "Next",
+        onClickHandler: this._next
+      }));
     });
 
     _defineProperty(this, "renderFeaturedProducts", () => {
@@ -890,7 +1015,59 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       }, {
         title: props.t('descTitle6'),
         detail: props.t('descDetail6')
-      }]
+      }],
+      CATEGORIES: [{
+        title: props.t('category1')
+      }, {
+        title: props.t('category2')
+      }, {
+        title: props.t('category3')
+      }, {
+        title: props.t('category4')
+      }, {
+        title: props.t('category5')
+      }, {
+        title: props.t('category6')
+      }, {
+        title: props.t('category7')
+      }, {
+        title: props.t('category8')
+      }, {
+        title: props.t('category9')
+      }],
+      POPULAR_SEARCHES: [{
+        title: props.t('popular-category1')
+      }, {
+        title: props.t('popular-category2')
+      }, {
+        title: props.t('popular-category3')
+      }, {
+        title: props.t('popular-category4')
+      }, {
+        title: props.t('popular-category5')
+      }, {
+        title: props.t('popular-category6')
+      }, {
+        title: props.t('popular-category7')
+      }, {
+        title: props.t('popular-category8')
+      }, {
+        title: props.t('popular-category9')
+      }, {
+        title: props.t('popular-category10')
+      }],
+      CAROUSEL_DATA: [{
+        title: 'Slide1',
+        img: '/static/images/slide2.jpg'
+      }, {
+        title: 'Slide2',
+        img: '/static/images/slide3.jpg'
+      }, {
+        title: 'Slide3',
+        img: '/static/images/slide1.jpg'
+      }],
+      activeIndex: 0,
+      animating: false
     };
   }
 
@@ -1034,7 +1211,7 @@ class Homepage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 }
 
 Homepage.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'footer', 'header']
+  namespacesRequired: ['common', 'footer', 'header', 'mainpage']
 });
 
 Homepage.propTypes = {

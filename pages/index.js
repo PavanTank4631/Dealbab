@@ -38,7 +38,7 @@ class Homepage extends Component {
 }
 
 Homepage.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'footer', 'header'],
+  namespacesRequired: ['common', 'footer', 'header', 'mainpage'],
 })
 
 Homepage.propTypes = {

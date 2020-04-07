@@ -6,7 +6,19 @@ import { withTranslation } from '../i18n'
 
 //styling
 import {
-  Container, Row, InputGroup, InputGroupAddon, Input, Button, Col
+  Container, Row, InputGroup, InputGroupAddon, Input, Button, Col,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText
 } from 'reactstrap';
 
 //icons & colors
@@ -33,7 +45,8 @@ class Header extends Component {
         { title: props.t('category7') },
         { title: props.t('category8') },
         { title: props.t('category9') },
-      ]
+      ],
+      isCollapse: false
     }
   }
 
@@ -54,10 +67,11 @@ class Header extends Component {
           <Container fluid className="spacing">
             <Row>
               <IoIosMenu color={COLORS.BLACK} className="menu-icon" />
-              <div>
+              <img src="/static/images/logo.jpg" alt="404!" className="brand-logo" />
+              {/* <div>
                 <p id="title">Dealbab</p>
                 <p id="sub-title">{t('explore-more')}</p>
-              </div>
+              </div> */}
               {this.renderSearchBar()}
               <div className="login-section">
                 <p className="login">{t('login')}</p>
@@ -95,6 +109,10 @@ class Header extends Component {
     this.setState({ dropdownOpen: !this.state.dropdownOpen })
   }
 
+  _toggleNavbar = () => {
+    this.setState({ isCollapse: !this.state.isCollapse })
+  }
+
   /*
   ..######...#######..##.....##.########...#######..##....##.########.##....##.########..######.
   .##....##.##.....##.###...###.##.....##.##.....##.###...##.##.......###...##....##....##....##
@@ -121,50 +139,49 @@ class Header extends Component {
   }
 
   renderSubHeader = () => {
-    const { CATEGORIES } = this.state
+    const { isCollapse } = this.state
     const { t } = this.props
 
     return (
       <div id="sub-header">
         <Container fluid className="spacing">
-          <Row>
-            <ul>
-              {/* {CATEGORIES.map((item, index) => {
-                return ( */}
-              <li className="categories" >
-                <a href="#">{t('all-category')}</a>
-              </li>
-              <li className="categories" >
-                <a href="#">{t('category1')}</a>
-              </li>
-              <li className="categories" >
-                <a href="#">{t('category2')}</a>
-              </li>
-              <li className="categories" >
-                <a href="#">{t('category3')}</a>
-              </li>
-              <li className="categories" >
-                <a href="#">{t('category4')}</a>
-              </li>
-              <li className="categories" >
-                <a href="#">{t('category5')}</a>
-              </li>
-              <li className="categories" >
-                <a href="#">{t('category6')}</a>
-              </li>
-              <li className="categories" >
-                <a href="#">{t('category7')}</a>
-              </li>
-              <li className="categories" >
-                <a href="#">{t('category8')}</a>
-              </li>
-              <li className="categories" >
-                <a href="#">{t('category9')}</a>
-              </li>
-              {/* )
-              })} */}
-            </ul>
-          </Row>
+          <Navbar expand="lg" id="sub-header-navbar">
+            <NavbarBrand className="categories">
+              <NavLink href="#">{t('all-category')}</NavLink>
+            </NavbarBrand>
+            <NavbarToggler onClick={this._toggleNavbar} />
+            <Collapse isOpen={isCollapse} navbar>
+              <Nav className="mr-auto" navbar>
+                <NavItem className="categories">
+                  <NavLink href="/components/">{t('category1')}</NavLink>
+                </NavItem>
+                <NavItem className="categories">
+                  <NavLink href="#">{t('category2')}</NavLink>
+                </NavItem>
+                <NavItem className="categories">
+                  <NavLink href="#">{t('category3')}</NavLink>
+                </NavItem>
+                <NavItem className="categories">
+                  <NavLink href="#">{t('category4')}</NavLink>
+                </NavItem>
+                <NavItem className="categories">
+                  <NavLink href="#">{t('category5')}</NavLink>
+                </NavItem>
+                <NavItem className="categories">
+                  <NavLink href="#">{t('category6')}</NavLink>
+                </NavItem>
+                <NavItem className="categories">
+                  <NavLink href="#">{t('category7')}</NavLink>
+                </NavItem>
+                <NavItem className="categories">
+                  <NavLink href="#">{t('category8')}</NavLink>
+                </NavItem>
+                <NavItem className="categories">
+                  <NavLink href="#">{t('category9')}</NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Navbar>
         </Container>
       </div>
     )

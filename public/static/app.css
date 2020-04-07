@@ -116,7 +116,10 @@ p {
 .##.....##.##.......##.....##.##.....##.##.......##....##.
 .##.....##.########.##.....##.########..########.##.....##
 */
-.header-container {
+.brand-logo {
+  width: auto;
+  height: 50px;
+  margin: 10px 0;
 }
 
 .spacing {
@@ -280,6 +283,10 @@ p {
   height: auto;
 }
 
+#sub-header-navbar {
+  padding: 0;
+}
+
 #sub-header ul {
   margin: 0;
   padding: 10px 15px;
@@ -318,6 +325,16 @@ p {
 .main-page-container {
   background-color: var(--body-bg-color);
   flex: 1;
+}
+
+.carousel {
+  margin: 20px 0;
+  background-color: var(--black);
+}
+
+.carousel-img {
+  width: 100%;
+  height: 40vh;
 }
 
 .products-section {
@@ -370,7 +387,7 @@ p {
   font-family: var(--body-fonts);
   color: var(--header1-text-color);
   font-weight: 600;
-  max-height: 45px;
+  height: 45px;
   overflow: hidden;
 }
 
@@ -382,7 +399,7 @@ p {
   color: var(--header1-text-color);
   font-weight: 600;
   text-align: right;
-  max-height: 45px;
+  height: 45px;
   overflow: hidden;
 }
 
@@ -504,6 +521,39 @@ p {
   font-size: 16px;
   margin: 0;
   margin-bottom: 15px;
+  text-align: right;
+}
+
+/*
+..######..####.########..########.........########.....###....########.
+.##....##..##..##.....##.##...............##.....##...##.##...##.....##
+.##........##..##.....##.##...............##.....##..##...##..##.....##
+..######...##..##.....##.######...........########..##.....##.########.
+.......##..##..##.....##.##...............##.....##.#########.##...##..
+.##....##..##..##.....##.##...............##.....##.##.....##.##....##.
+..######..####.########..########.#######.########..##.....##.##.....##
+*/
+
+.side-bar-section {
+  background-color: var(--white);
+  border-top: 2px solid var(--header-title-color);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 8px 10px;
+}
+
+[dir="ltr"] .sidebar-items {
+  font-family: var(--body-fonts);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+[dir="rtl"] .sidebar-items {
+  font-family: var(--body-fonts);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
   text-align: right;
 }
 

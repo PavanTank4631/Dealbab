@@ -6,7 +6,11 @@ import { withTranslation } from '../i18n'
 
 //styling
 import {
-  Container, Row, Button
+  Container, Row, Button, Col,
+  Carousel,
+  CarouselItem,
+  CarouselControl,
+  CarouselIndicators,
 } from 'reactstrap';
 
 //icons & colors
@@ -159,7 +163,37 @@ class MainPage extends Component {
         { title: props.t('descTitle4'), detail: props.t('descDetail4') },
         { title: props.t('descTitle5'), detail: props.t('descDetail5') },
         { title: props.t('descTitle6'), detail: props.t('descDetail6') },
-      ]
+      ],
+      CATEGORIES: [
+        { title: props.t('category1') },
+        { title: props.t('category2') },
+        { title: props.t('category3') },
+        { title: props.t('category4') },
+        { title: props.t('category5') },
+        { title: props.t('category6') },
+        { title: props.t('category7') },
+        { title: props.t('category8') },
+        { title: props.t('category9') },
+      ],
+      POPULAR_SEARCHES: [
+        { title: props.t('popular-category1') },
+        { title: props.t('popular-category2') },
+        { title: props.t('popular-category3') },
+        { title: props.t('popular-category4') },
+        { title: props.t('popular-category5') },
+        { title: props.t('popular-category6') },
+        { title: props.t('popular-category7') },
+        { title: props.t('popular-category8') },
+        { title: props.t('popular-category9') },
+        { title: props.t('popular-category10') },
+      ],
+      CAROUSEL_DATA: [
+        { title: 'Slide1', img: '/static/images/slide2.jpg' },
+        { title: 'Slide2', img: '/static/images/slide3.jpg' },
+        { title: 'Slide3', img: '/static/images/slide1.jpg' },
+      ],
+      activeIndex: 0,
+      animating: false
     }
   }
 
@@ -188,6 +222,27 @@ class MainPage extends Component {
     this.setState({ dropdownOpen: !this.state.dropdownOpen })
   }
 
+  _next = () => {
+    const { animating, activeIndex } = this.state
+
+    if (animating) return;
+    const nextIndex = activeIndex === this.state.CAROUSEL_DATA.length - 1 ? 0 : activeIndex + 1;
+    this.setState({ activeIndex: nextIndex })
+  }
+
+  _previous = () => {
+    const { animating, activeIndex } = this.state
+
+    if (animating) return;
+    const previousIndex = activeIndex === 0 ? this.state.CAROUSEL_DATA.length - 1 : activeIndex - 1;
+    this.setState({ activeIndex: previousIndex })
+  }
+
+  _goToIndex = (newIndex) => {
+    if (this.state.animating) return;
+    this.setState({ activeIndex: newIndex })
+  }
+
   /*
   ..######...#######..##.....##.########...#######..##....##.########.##....##.########..######.
   .##....##.##.....##.###...###.##.....##.##.....##.###...##.##.......###...##....##....##....##
@@ -201,14 +256,82 @@ class MainPage extends Component {
   renderBodyContainer = () => {
     return (
       <Container fluid className="spacing">
-        <div className="products-section">
-          {this.renderFeaturedProducts()}
-          {this.renderCoupens()}
-          {this.renderFoundByDealbabProducts()}
-          {this.renderMostPopularProducts()}
-          {this.renderDisclaimerSection()}
-        </div>
+        <Row>
+          <Col lg={3} md={6} sm={12}>
+            <div id="side-bar">
+              {this.renderLeftComponent()}
+            </div>
+          </Col>
+          <Col lg={9} md={6} sm={12}>
+            {this.renderCarousel()}
+            <div className="products-section">
+              {this.renderFeaturedProducts()}
+              {this.renderCoupens()}
+              {this.renderFoundByDealbabProducts()}
+              {this.renderMostPopularProducts()}
+              {this.renderDisclaimerSection()}
+            </div>
+          </Col>
+        </Row>
+
       </Container>
+    )
+  }
+
+  renderLeftComponent = () => {
+    const { CATEGORIES, POPULAR_SEARCHES } = this.state
+    const { t } = this.props
+
+    return (
+      <div>
+        {this.renderSideBarSection(CATEGORIES, t('top-category'))}
+        {this.renderSideBarSection(POPULAR_SEARCHES, t('top-vendors'))}
+        {this.renderSideBarSection(CATEGORIES, t('popular-searches'))}
+      </div>
+    )
+  }
+
+  renderSideBarSection = (data, title) => {
+    const { t } = this.props
+
+    return (
+      <div className="side-bar-section">
+        <h3 className="section-title">{title}</h3>
+        {data.map((item, index) => {
+          return (
+            <div key={item.toString()}>
+              <p className="sidebar-items">{item.title}</p>
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+
+  renderCarousel = () => {
+    const { activeIndex, CAROUSEL_DATA } = this.state
+
+    return (
+      <Carousel
+        activeIndex={activeIndex}
+        next={this._next}
+        previous={this._previous}
+        className="carousel"
+      >
+        <CarouselIndicators items={CAROUSEL_DATA} activeIndex={activeIndex} onClickHandler={this._goToIndex} />
+        {CAROUSEL_DATA.map((item, index) => {
+          return (
+            <CarouselItem
+              onExiting={() => this.setState({ animating: true })}
+              onExited={() => this.setState({ animating: false })}
+            >
+              <img src={item.img} alt='404!' className="carousel-img" />
+            </CarouselItem>
+          )
+        })}
+        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this._previous} />
+        <CarouselControl direction="next" directionText="Next" onClickHandler={this._next} />
+      </Carousel>
     )
   }
 
