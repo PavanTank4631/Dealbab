@@ -300,7 +300,7 @@ class MainPage extends Component {
         {data.map((item, index) => {
           return (
             <div key={item.toString()}>
-              <p className="sidebar-items">{item.title}</p>
+              <a href="#" className="sidebar-items">{item.title}</a>
             </div>
           )
         })}
