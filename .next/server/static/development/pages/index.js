@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -784,7 +784,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         id: "side-bar"
       }, this.renderLeftComponent())), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
         lg: 9,
-        md: 6,
+        md: 12,
         sm: 12,
         className: "main-col"
       }, this.renderCarousel(), __jsx("div", {
@@ -1104,6 +1104,328 @@ MainPage.propTypes = {
 
 /***/ }),
 
+/***/ "./components/SearchPage.js":
+/*!**********************************!*\
+  !*** ./components/SearchPage.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../i18n */ "./i18n.js");
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Helper_Constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Helper/Constants */ "./Helper/Constants.js");
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+ //styling
+
+ //icons & colors
+
+
+
+const FEATURED_PRODUCTS = [{
+  "img": "/static/images/1.png",
+  "title": "65-Inch 4K UHD Smart OLED TV OLED65C9PVA Black"
+}, {
+  "img": "/static/images/2.png",
+  "title": "Samsung Galaxy Tab 10.1 T580"
+}, {
+  "img": "/static/images/3.png",
+  "title": "DeLonghi ECAM 350.75 Dinamica Fully Automatic Coffee Machine, Silver"
+}, {
+  "img": "/static/images/4.png",
+  "title": "Samsung Galaxy Fit Black"
+}, {
+  "img": "/static/images/5.png",
+  "title": "Astro Gaming A20 Headset"
+}, {
+  "img": "/static/images/6.png",
+  "title": "Men's Nate Chronograph Quartz Watch JR1354"
+}, {
+  "img": "/static/images/7.png",
+  "title": "Calvin Klein Eternity Moment For Women"
+}, {
+  "img": "/static/images/8.png",
+  "title": "Lancome La Nuit Tresor For Women 75ml"
+}, {
+  "img": "/static/images/9.png",
+  "title": "Fujifilm Instax Mini 25"
+}, {
+  "img": "/static/images/10.png",
+  "title": "DJI Mavic 2 Zoom Drone Quadcopter"
+}, {
+  "img": "/static/images/11.png",
+  "title": "Microsoft Surface Pro 6"
+}, {
+  "img": "/static/images/12.png",
+  "title": "Bowers and Wilkins P9 Signature headphones"
+}, {
+  "img": "/static/images/13.png",
+  "title": "Lenovo ThinkPad"
+}, {
+  "img": "/static/images/14.png",
+  "title": "HP Omen 15 Laptop"
+}, {
+  "img": "/static/images/15.png",
+  "title": "Huawei P20 Pro"
+}, {
+  "img": "/static/images/16.png",
+  "title": "Apple iPad Pro 2017 12 9 Inch"
+}, {
+  "img": "/static/images/17.png",
+  "title": "Nintendo Switch"
+}, {
+  "img": "/static/images/18.png",
+  "title": "Apple iPhone 11"
+}];
+
+class SearchPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "_toggleDropDown", () => {
+      this.setState({
+        dropdownOpen: !this.state.dropdownOpen
+      });
+    });
+
+    _defineProperty(this, "_next", () => {
+      const {
+        animating,
+        activeIndex
+      } = this.state;
+      if (animating) return;
+      const nextIndex = activeIndex === this.state.CAROUSEL_DATA.length - 1 ? 0 : activeIndex + 1;
+      this.setState({
+        activeIndex: nextIndex
+      });
+    });
+
+    _defineProperty(this, "_previous", () => {
+      const {
+        animating,
+        activeIndex
+      } = this.state;
+      if (animating) return;
+      const previousIndex = activeIndex === 0 ? this.state.CAROUSEL_DATA.length - 1 : activeIndex - 1;
+      this.setState({
+        activeIndex: previousIndex
+      });
+    });
+
+    _defineProperty(this, "_goToIndex", newIndex => {
+      if (this.state.animating) return;
+      this.setState({
+        activeIndex: newIndex
+      });
+    });
+
+    _defineProperty(this, "renderBodyContainer", () => {
+      return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
+        fluid: true,
+        className: "spacing"
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+        lg: 3,
+        md: 0,
+        sm: 0,
+        className: "side-bar-col"
+      }, __jsx("div", {
+        id: "side-bar"
+      }, this.renderLeftComponent())), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+        lg: 9,
+        md: 12,
+        sm: 12,
+        className: "main-col"
+      }, __jsx("div", {
+        className: "products-section"
+      }, this.renderFilterSection(), this.renderFeaturedProducts()))));
+    });
+
+    _defineProperty(this, "renderLeftComponent", () => {
+      const {
+        CATEGORIES,
+        POPULAR_SEARCHES
+      } = this.state;
+      const {
+        t
+      } = this.props;
+      return __jsx("div", null, this.renderSideBarSection(CATEGORIES, t('top-category')), this.renderSideBarSection(POPULAR_SEARCHES, t('top-vendors')), this.renderSideBarSection(CATEGORIES, t('popular-searches')));
+    });
+
+    _defineProperty(this, "renderSideBarSection", (data, title) => {
+      const {
+        t
+      } = this.props;
+      return __jsx("div", {
+        className: "side-bar-section"
+      }, __jsx("h3", {
+        className: "section-title"
+      }, title), data.map((item, index) => {
+        return __jsx("div", {
+          key: item.toString()
+        }, __jsx("p", {
+          className: "sidebar-items"
+        }, item.title));
+      }));
+    });
+
+    _defineProperty(this, "renderFilterSection", () => {
+      const {
+        t
+      } = this.props;
+      return __jsx("div", null, __jsx("h3", {
+        className: "section-title"
+      }, t('foundResult'), " iPhone 11 case"));
+    });
+
+    _defineProperty(this, "renderFeaturedProducts", () => {
+      const {
+        t
+      } = this.props;
+      return __jsx("div", null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, FEATURED_PRODUCTS.map((item, index) => {
+        return __jsx("a", {
+          className: "product-link"
+        }, __jsx("div", {
+          className: "product-container"
+        }, __jsx("div", {
+          className: "product-semicontainer"
+        }, __jsx("img", {
+          src: item.img,
+          className: "product-img"
+        }), __jsx("p", {
+          className: "product-title"
+        }, item.title), __jsx("p", {
+          className: "product-subtitle"
+        }, "deals from 4 shops")), __jsx("div", {
+          className: "deal-button"
+        }, __jsx("p", {
+          className: "button-text"
+        }, "check deal"))));
+      })));
+    });
+
+    this.state = {
+      DISCLAIMER: [{
+        title: props.t('descTitle1'),
+        detail: props.t('descDetail1')
+      }, {
+        title: props.t('descTitle2'),
+        detail: props.t('descDetail2')
+      }, {
+        title: props.t('descTitle3'),
+        detail: props.t('descDetail3')
+      }, {
+        title: props.t('descTitle4'),
+        detail: props.t('descDetail4')
+      }, {
+        title: props.t('descTitle5'),
+        detail: props.t('descDetail5')
+      }, {
+        title: props.t('descTitle6'),
+        detail: props.t('descDetail6')
+      }],
+      CATEGORIES: [{
+        title: props.t('category1')
+      }, {
+        title: props.t('category2')
+      }, {
+        title: props.t('category3')
+      }, {
+        title: props.t('category4')
+      }, {
+        title: props.t('category5')
+      }, {
+        title: props.t('category6')
+      }, {
+        title: props.t('category7')
+      }, {
+        title: props.t('category8')
+      }, {
+        title: props.t('category9')
+      }],
+      POPULAR_SEARCHES: [{
+        title: props.t('popular-category1')
+      }, {
+        title: props.t('popular-category2')
+      }, {
+        title: props.t('popular-category3')
+      }, {
+        title: props.t('popular-category4')
+      }, {
+        title: props.t('popular-category5')
+      }, {
+        title: props.t('popular-category6')
+      }, {
+        title: props.t('popular-category7')
+      }, {
+        title: props.t('popular-category8')
+      }, {
+        title: props.t('popular-category9')
+      }, {
+        title: props.t('popular-category10')
+      }],
+      CAROUSEL_DATA: [{
+        title: 'Slide1',
+        img: '/static/images/slide2.jpg'
+      }, {
+        title: 'Slide2',
+        img: '/static/images/slide3.jpg'
+      }, {
+        title: 'Slide3',
+        img: '/static/images/slide1.jpg'
+      }],
+      activeIndex: 0,
+      animating: false
+    };
+  }
+
+  render() {
+    const {
+      favIndex
+    } = this.state;
+    const {
+      t
+    } = this.props;
+    return __jsx("div", {
+      className: "main-page-container"
+    }, this.renderBodyContainer());
+  }
+  /*
+  .##........#######...######...####..######...######.
+  .##.......##.....##.##....##...##..##....##.##....##
+  .##.......##.....##.##.........##..##.......##......
+  .##.......##.....##.##...####..##..##........######.
+  .##.......##.....##.##....##...##..##.............##
+  .##.......##.....##.##....##...##..##....##.##....##
+  .########..#######...######...####..######...######.
+  */
+
+
+}
+
+SearchPage.propTypes = {
+  t: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(_i18n__WEBPACK_IMPORTED_MODULE_3__["withTranslation"])('searchpage')(SearchPage));
+
+/***/ }),
+
 /***/ "./i18n.js":
 /*!*****************!*\
   !*** ./i18n.js ***!
@@ -1164,6 +1486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Header */ "./components/Header.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Footer */ "./components/Footer.js");
 /* harmony import */ var _components_MainPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/MainPage */ "./components/MainPage.js");
+/* harmony import */ var _components_SearchPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/SearchPage */ "./components/SearchPage.js");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1172,6 +1495,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  //i18n
 
  //file imports
+
 
 
 
@@ -1207,13 +1531,13 @@ class Homepage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       isArabic: isArabic,
       manageLanguage: this._manageLanguage,
       flagUrl: !isArabic ? '/static/images/ar.png' : '/static/images/en.png'
-    }), __jsx(_components_MainPage__WEBPACK_IMPORTED_MODULE_5__["default"], null), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+    }), __jsx(_components_SearchPage__WEBPACK_IMPORTED_MODULE_6__["default"], null), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
   }
 
 }
 
 Homepage.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'footer', 'header', 'mainpage']
+  namespacesRequired: ['common', 'footer', 'header', 'mainpage', 'searchpage']
 });
 
 Homepage.propTypes = {
@@ -1223,7 +1547,7 @@ Homepage.propTypes = {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

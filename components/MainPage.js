@@ -262,7 +262,7 @@ class MainPage extends Component {
               {this.renderLeftComponent()}
             </div>
           </Col>
-          <Col lg={9} md={6} sm={12} className="main-col">
+          <Col lg={9} md={12} sm={12} className="main-col">
             {this.renderCarousel()}
             <div className="products-section">
               {this.renderFeaturedProducts()}
