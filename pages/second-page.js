@@ -10,7 +10,7 @@ const SecondPage = ({ t }) => (
   <React.Fragment>
     <main>
       <Header title={t('h1')} />
-      <Link href='/'>
+      <Link href='/second'>
         <button
           type='button'
         >
