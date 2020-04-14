@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -778,21 +778,26 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       });
     });
 
-    _defineProperty(this, "_fetchFeaturedProducts", () => {
+    _defineProperty(this, "_fetchFeaturedProducts", async () => {
       const URL = "http://ec2-15-185-88-172.me-south-1.compute.amazonaws.com:8080/manualDealsbyOffsetValue";
-      let data = {
-        offsetValue: 1
+      const data = {
+        offsetValue: '1'
       };
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.post(URL, data).then(response => {
-        console.log('response', response);
+      const headers = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      };
+      await axios__WEBPACK_IMPORTED_MODULE_4___default.a.post(URL, data, headers).then(res => {
+        console.log('response', res);
       }).catch(error => {
         console.log('error', error.response);
       });
     });
 
-    _defineProperty(this, "_fetchCategories", () => {
+    _defineProperty(this, "_fetchCategories", async () => {
       const URL = "http://ec2-15-185-88-172.me-south-1.compute.amazonaws.com:8080/categoryList";
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(URL).then(res => {
+      await axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(URL).then(res => {
         this.setState({
           availableCategories: res.data.Categories
         });
@@ -826,12 +831,13 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       console.log('availableCategories', this.state.availableCategories);
       const {
         CATEGORIES,
-        POPULAR_SEARCHES
+        POPULAR_SEARCHES,
+        availableCategories
       } = this.state;
       const {
         t
       } = this.props;
-      return __jsx("div", null, this.renderSideBarSection(CATEGORIES, t('top-category')), this.renderSideBarSection(POPULAR_SEARCHES, t('top-vendors')), this.renderSideBarSection(CATEGORIES, t('popular-searches')));
+      return __jsx("div", null, this.renderSideBarSection(availableCategories, t('top-category')));
     });
 
     _defineProperty(this, "renderSideBarSection", (data, title) => {
@@ -1103,7 +1109,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       }],
       activeIndex: 0,
       animating: false,
-      availableCategories: ''
+      availableCategories: []
     };
   }
 
@@ -1576,7 +1582,7 @@ Homepage.propTypes = {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

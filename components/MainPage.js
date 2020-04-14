@@ -196,7 +196,7 @@ class MainPage extends Component {
       ],
       activeIndex: 0,
       animating: false,
-      availableCategories: ''
+      availableCategories: []
     }
   }
 
@@ -251,23 +251,29 @@ class MainPage extends Component {
 
 
 
-  _fetchFeaturedProducts = () => {
+  _fetchFeaturedProducts = async () => {
     const URL = "http://ec2-15-185-88-172.me-south-1.compute.amazonaws.com:8080/manualDealsbyOffsetValue"
-    let data = { offsetValue: 1 }
+    const data = {
+      offsetValue: '1'
+    }
+    const headers = {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    }
 
-    axios.post(URL, data)
-      .then((response) => {
-        console.log('response', response)
+    await axios
+      .post(URL, data, headers)
+      .then(res => {
+        console.log('response', res)
       })
-      .catch((error) => {
+      .catch(error => {
         console.log('error', error.response)
       });
   }
 
-  _fetchCategories = () => {
+  _fetchCategories = async () => {
     const URL = "http://ec2-15-185-88-172.me-south-1.compute.amazonaws.com:8080/categoryList"
 
-    axios.get(URL)
+    await axios.get(URL)
       .then((res) => {
         this.setState({ availableCategories: res.data.Categories })
       })
@@ -313,15 +319,15 @@ class MainPage extends Component {
 
   renderLeftComponent = () => {
     console.log('availableCategories', this.state.availableCategories)
-    const { CATEGORIES, POPULAR_SEARCHES } = this.state
+    const { CATEGORIES, POPULAR_SEARCHES, availableCategories } = this.state
     const { t } = this.props
 
 
     return (
       <div>
-        {this.renderSideBarSection(CATEGORIES, t('top-category'))}
-        {this.renderSideBarSection(POPULAR_SEARCHES, t('top-vendors'))}
-        {this.renderSideBarSection(CATEGORIES, t('popular-searches'))}
+        {this.renderSideBarSection(availableCategories, t('top-category'))}
+        {/* {this.renderSideBarSection(POPULAR_SEARCHES, t('top-vendors'))}
+        {this.renderSideBarSection(CATEGORIES, t('popular-searches'))} */}
       </div>
     )
   }
