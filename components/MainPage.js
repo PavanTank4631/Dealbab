@@ -316,6 +316,7 @@ class MainPage extends Component {
     const { CATEGORIES, POPULAR_SEARCHES } = this.state
     const { t } = this.props
 
+
     return (
       <div>
         {this.renderSideBarSection(CATEGORIES, t('top-category'))}
