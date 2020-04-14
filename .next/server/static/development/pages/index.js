@@ -250,9 +250,7 @@ class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         className: "help-container"
       }, __jsx("p", {
         className: "help-title"
-      }, t('help-title'), __jsx(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__["FaRegQuestionCircle"], {
-        className: "help-icon"
-      })), __jsx("p", {
+      }, t('help-title')), __jsx("p", {
         className: "help-subtitle"
       }, t('help-tagline'))), __jsx("h5", {
         className: "col-title"
@@ -613,14 +611,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../i18n */ "./i18n.js");
 /* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _Helper_Constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Helper/Constants */ "./Helper/Constants.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Helper_Constants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Helper/Constants */ "./Helper/Constants.js");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -734,6 +735,12 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
     super(props);
 
+    _defineProperty(this, "componentDidMount", () => {
+      this._fetchFeaturedProducts();
+
+      this._fetchCategories();
+    });
+
     _defineProperty(this, "_toggleDropDown", () => {
       this.setState({
         dropdownOpen: !this.state.dropdownOpen
@@ -771,18 +778,41 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       });
     });
 
+    _defineProperty(this, "_fetchFeaturedProducts", () => {
+      const URL = "http://ec2-15-185-88-172.me-south-1.compute.amazonaws.com:8080/manualDealsbyOffsetValue";
+      let data = {
+        offsetValue: 1
+      };
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.post(URL, data).then(response => {
+        console.log('response', response);
+      }).catch(error => {
+        console.log('error', error.response);
+      });
+    });
+
+    _defineProperty(this, "_fetchCategories", () => {
+      const URL = "http://ec2-15-185-88-172.me-south-1.compute.amazonaws.com:8080/categoryList";
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(URL).then(res => {
+        this.setState({
+          availableCategories: res.data.Categories
+        });
+      }).catch(err => {
+        console.log('err', err);
+      });
+    });
+
     _defineProperty(this, "renderBodyContainer", () => {
-      return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
+      return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Container"], {
         fluid: true,
         className: "spacing"
-      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Col"], {
         lg: 3,
         md: 0,
         sm: 0,
         className: "side-bar-col"
       }, __jsx("div", {
         id: "side-bar"
-      }, this.renderLeftComponent())), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
+      }, this.renderLeftComponent())), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Col"], {
         lg: 9,
         md: 12,
         sm: 12,
@@ -793,6 +823,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     });
 
     _defineProperty(this, "renderLeftComponent", () => {
+      console.log('availableCategories', this.state.availableCategories);
       const {
         CATEGORIES,
         POPULAR_SEARCHES
@@ -817,7 +848,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         }, __jsx("a", {
           href: "#",
           className: "sidebar-items"
-        }, item.title));
+        }, item.category_name));
       }));
     });
 
@@ -826,17 +857,17 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         activeIndex,
         CAROUSEL_DATA
       } = this.state;
-      return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Carousel"], {
+      return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Carousel"], {
         activeIndex: activeIndex,
         next: this._next,
         previous: this._previous,
         className: "carousel"
-      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CarouselIndicators"], {
+      }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["CarouselIndicators"], {
         items: CAROUSEL_DATA,
         activeIndex: activeIndex,
         onClickHandler: this._goToIndex
       }), CAROUSEL_DATA.map((item, index) => {
-        return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CarouselItem"], {
+        return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["CarouselItem"], {
           onExiting: () => this.setState({
             animating: true
           }),
@@ -848,11 +879,11 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
           alt: "404!",
           className: "carousel-img"
         }));
-      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CarouselControl"], {
+      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["CarouselControl"], {
         direction: "prev",
         directionText: "Previous",
         onClickHandler: this._previous
-      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["CarouselControl"], {
+      }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["CarouselControl"], {
         direction: "next",
         directionText: "Next",
         onClickHandler: this._next
@@ -865,7 +896,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       } = this.props;
       return __jsx("div", null, __jsx("h3", {
         className: "section-title"
-      }, t('featured-products')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, FEATURED_PRODUCTS.map((item, index) => {
+      }, t('featured-products')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Row"], null, FEATURED_PRODUCTS.map((item, index) => {
         return __jsx("a", {
           className: "product-link"
         }, __jsx("div", {
@@ -893,7 +924,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       } = this.props;
       return __jsx("div", null, __jsx("h3", {
         className: "section-title"
-      }, t('featured-products')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, COUPENS.map((item, index) => {
+      }, t('featured-products')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Row"], null, COUPENS.map((item, index) => {
         return __jsx("div", {
           className: "product-container coupen-container"
         }, __jsx("div", {
@@ -917,7 +948,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       } = this.props;
       return __jsx("div", null, __jsx("h3", {
         className: "section-title"
-      }, t('deals-by-Dealbab')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, DEALBAB_DEALS.map((item, index) => {
+      }, t('deals-by-Dealbab')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Row"], null, DEALBAB_DEALS.map((item, index) => {
         return __jsx("div", {
           className: "product-container"
         }, __jsx("div", {
@@ -943,7 +974,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       } = this.props;
       return __jsx("div", null, __jsx("h3", {
         className: "section-title"
-      }, t('most-popular')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], null, MOST_POPULAR.map((item, index) => {
+      }, t('most-popular')), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Row"], null, MOST_POPULAR.map((item, index) => {
         return __jsx("div", {
           className: "product-container"
         }, __jsx("div", {
@@ -999,6 +1030,7 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       }, t('descDetail6'))));
     });
 
+    this._fetchCategories = this._fetchCategories.bind(this);
     this.state = {
       DISCLAIMER: [{
         title: props.t('descTitle1'),
@@ -1070,17 +1102,12 @@ class MainPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         img: '/static/images/slide1.jpg'
       }],
       activeIndex: 0,
-      animating: false
+      animating: false,
+      availableCategories: ''
     };
   }
 
   render() {
-    const {
-      favIndex
-    } = this.state;
-    const {
-      t
-    } = this.props;
     return __jsx("div", {
       className: "main-page-container"
     }, this.renderBodyContainer());
@@ -1463,10 +1490,10 @@ module.exports = new NextI18Next({
 /*!************************************************!*\
   !*** ./node_modules/next-i18next/package.json ***!
   \************************************************/
-/*! exports provided: _args, _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _spec, _where, author, bugs, bundlesize, dependencies, description, devDependencies, engines, funding, homepage, husky, keywords, license, main, name, peerDependencies, repository, scripts, types, version, default */
+/*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, bundlesize, dependencies, deprecated, description, devDependencies, engines, funding, homepage, husky, keywords, license, main, name, peerDependencies, repository, scripts, types, version, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"_args\":[[\"next-i18next@4.2.1\",\"/Users/piyushkalsariya/projects/Dealbab\"]],\"_from\":\"next-i18next@4.2.1\",\"_id\":\"next-i18next@4.2.1\",\"_inBundle\":false,\"_integrity\":\"sha512-77FCTcBj+36tm3K8iUTYRbBVlc/qM+rnQw23hm7czgNj0Jp+yynxE/w4I1cFWUmGh7VjrfadKVl8b+u6t4AoWg==\",\"_location\":\"/next-i18next\",\"_phantomChildren\":{\"@babel/runtime\":\"7.7.2\"},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"next-i18next@4.2.1\",\"name\":\"next-i18next\",\"escapedName\":\"next-i18next\",\"rawSpec\":\"4.2.1\",\"saveSpec\":null,\"fetchSpec\":\"4.2.1\"},\"_requiredBy\":[\"/\"],\"_resolved\":\"https://registry.npmjs.org/next-i18next/-/next-i18next-4.2.1.tgz\",\"_spec\":\"4.2.1\",\"_where\":\"/Users/piyushkalsariya/projects/Dealbab\",\"author\":{\"name\":\"Isaac Hinman\",\"email\":\"isaac@isaachinman.com\"},\"bugs\":{\"url\":\"https://github.com/isaachinman/next-i18next/issues\"},\"bundlesize\":[{\"path\":\"./examples/simple/.next/static/chunks/commons*.js\",\"maxSize\":\"106 kB\"},{\"path\":\"./examples/simple/.next/static/runtime/main*.js\",\"maxSize\":\"8 kB\"},{\"path\":\"./examples/simple/.next/static/runtime/webpack*.js\",\"maxSize\":\"750 B\"}],\"dependencies\":{\"core-js\":\"^2\",\"detect-node\":\"^2.0.4\",\"hoist-non-react-statics\":\"^3.2.0\",\"i18next\":\"^19.0.3\",\"i18next-browser-languagedetector\":\"^4.0.0\",\"i18next-express-middleware\":\"^1.5.0\",\"i18next-node-fs-backend\":\"^2.1.0\",\"i18next-xhr-backend\":\"^3.0.0\",\"path-match\":\"^1.2.4\",\"prop-types\":\"^15.6.2\",\"react-i18next\":\"^11.0.0\",\"url\":\"^0.11.0\"},\"description\":\"The easiest way to translate your NextJs apps.\",\"devDependencies\":{\"@babel/cli\":\"^7.5.5\",\"@babel/core\":\"^7.5.5\",\"@babel/plugin-proposal-class-properties\":\"^7.5.5\",\"@babel/plugin-transform-runtime\":\"^7.5.5\",\"@babel/preset-env\":\"^7.5.5\",\"@babel/preset-react\":\"^7.0.0\",\"@babel/preset-typescript\":\"^7.3.3\",\"@types/express\":\"^4.16.1\",\"@types/jest\":\"^24.0.16\",\"@types/jest-environment-puppeteer\":\"^4.0.0\",\"@types/react\":\"^16.8.4\",\"@types/react-dom\":\"^16.8.2\",\"@typescript-eslint/eslint-plugin\":\"^1.13.0\",\"@typescript-eslint/parser\":\"^1.13.0\",\"all-contributors-cli\":\"^6.0.0\",\"babel-core\":\"^7.0.0-bridge.0\",\"babel-jest\":\"^24.1.0\",\"babel-plugin-add-module-exports\":\"^1.0.0\",\"babel-plugin-transform-async-to-generator\":\"^6.24.1\",\"bundlesize\":\"^0.18.0\",\"enzyme\":\"^3.8.0\",\"enzyme-adapter-react-16\":\"^1.7.1\",\"eslint\":\"^6.1.0\",\"eslint-plugin-import\":\"^2.17.1\",\"eslint-plugin-jsx-a11y\":\"^6.1.2\",\"eslint-plugin-react\":\"^7.14.3\",\"husky\":\"^3.0.0\",\"jest\":\"^24.1.0\",\"jest-puppeteer\":\"^4.0.0\",\"jsdom\":\"^15.0.0\",\"jsdom-global\":\"^3.0.2\",\"next\":\"^9.0.1\",\"puppeteer\":\"^1.11.0\",\"react\":\"^16.12.0\",\"react-dom\":\"^16.12.0\",\"typescript\":\"^3.5.3\"},\"engines\":{\"node\":\">=8\"},\"funding\":{\"type\":\"github\",\"url\":\"https://github.com/sponsors/isaachinman\"},\"homepage\":\"https://github.com/isaachinman/next-i18next#readme\",\"husky\":{\"hooks\":{\"pre-commit\":\"yarn lint && yarn test\"}},\"keywords\":[\"react\",\"i18next\",\"nextjs\",\"next\",\"translation\",\"localisation\",\"localization\",\"locale\"],\"license\":\"MIT\",\"main\":\"dist/commonjs/index.js\",\"name\":\"next-i18next\",\"peerDependencies\":{\"next\":\">= 7.0.0\",\"react\":\">= 16.8.0\"},\"repository\":{\"type\":\"git\",\"url\":\"git+ssh://git@github.com/isaachinman/next-i18next.git\"},\"scripts\":{\"build\":\"yarn clean && yarn build:cjs && yarn build:es\",\"build:cjs\":\"BABEL_ENV=cjs babel src --extensions '.ts,.tsx' --out-dir dist/commonjs\",\"build:es\":\"BABEL_ENV=es babel src --extensions '.ts,.tsx' --out-dir dist/es\",\"build:examples/simple\":\"yarn --cwd examples/simple && yarn --cwd examples/simple build\",\"check-types\":\"tsc\",\"clean\":\"rm -rf examples/simple/.next && rm -rf dist && mkdir dist\",\"contributors:add\":\"all-contributors add\",\"contributors:check\":\"all-contributors check\",\"contributors:generate\":\"all-contributors generate\",\"heroku-postbuild\":\"yarn build && yarn build:examples/simple\",\"lint\":\"eslint types.d.ts src/**/* examples __tests__/**/*\",\"lint:fix\":\"eslint types.d.ts src/**/* examples __tests__/**/* --fix\",\"prepublishOnly\":\"yarn build\",\"run-example\":\"yarn build && cd examples/simple && yarn && yarn dev\",\"run-example:prod\":\"yarn --cwd examples/simple start\",\"test\":\"yarn check-types && yarn build && yarn build:examples/simple && bundlesize && NODE_ENV=test jest --maxWorkers=1 --silent\"},\"types\":\"./types.d.ts\",\"version\":\"4.2.1\"}");
+module.exports = JSON.parse("{\"_from\":\"next-i18next@4.2.1\",\"_id\":\"next-i18next@4.2.1\",\"_inBundle\":false,\"_integrity\":\"sha512-77FCTcBj+36tm3K8iUTYRbBVlc/qM+rnQw23hm7czgNj0Jp+yynxE/w4I1cFWUmGh7VjrfadKVl8b+u6t4AoWg==\",\"_location\":\"/next-i18next\",\"_phantomChildren\":{\"@babel/runtime\":\"7.7.2\"},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"next-i18next@4.2.1\",\"name\":\"next-i18next\",\"escapedName\":\"next-i18next\",\"rawSpec\":\"4.2.1\",\"saveSpec\":null,\"fetchSpec\":\"4.2.1\"},\"_requiredBy\":[\"/\"],\"_resolved\":\"https://registry.npmjs.org/next-i18next/-/next-i18next-4.2.1.tgz\",\"_shasum\":\"6ace3a58fb72ef4ae73451e4df32f1437bb5579d\",\"_spec\":\"next-i18next@4.2.1\",\"_where\":\"/Users/ravi/Desktop/simple\",\"author\":{\"name\":\"Isaac Hinman\",\"email\":\"isaac@isaachinman.com\"},\"bugs\":{\"url\":\"https://github.com/isaachinman/next-i18next/issues\"},\"bundleDependencies\":false,\"bundlesize\":[{\"path\":\"./examples/simple/.next/static/chunks/commons*.js\",\"maxSize\":\"106 kB\"},{\"path\":\"./examples/simple/.next/static/runtime/main*.js\",\"maxSize\":\"8 kB\"},{\"path\":\"./examples/simple/.next/static/runtime/webpack*.js\",\"maxSize\":\"750 B\"}],\"dependencies\":{\"core-js\":\"^2\",\"detect-node\":\"^2.0.4\",\"hoist-non-react-statics\":\"^3.2.0\",\"i18next\":\"^19.0.3\",\"i18next-browser-languagedetector\":\"^4.0.0\",\"i18next-express-middleware\":\"^1.5.0\",\"i18next-node-fs-backend\":\"^2.1.0\",\"i18next-xhr-backend\":\"^3.0.0\",\"path-match\":\"^1.2.4\",\"prop-types\":\"^15.6.2\",\"react-i18next\":\"^11.0.0\",\"url\":\"^0.11.0\"},\"deprecated\":false,\"description\":\"The easiest way to translate your NextJs apps.\",\"devDependencies\":{\"@babel/cli\":\"^7.5.5\",\"@babel/core\":\"^7.5.5\",\"@babel/plugin-proposal-class-properties\":\"^7.5.5\",\"@babel/plugin-transform-runtime\":\"^7.5.5\",\"@babel/preset-env\":\"^7.5.5\",\"@babel/preset-react\":\"^7.0.0\",\"@babel/preset-typescript\":\"^7.3.3\",\"@types/express\":\"^4.16.1\",\"@types/jest\":\"^24.0.16\",\"@types/jest-environment-puppeteer\":\"^4.0.0\",\"@types/react\":\"^16.8.4\",\"@types/react-dom\":\"^16.8.2\",\"@typescript-eslint/eslint-plugin\":\"^1.13.0\",\"@typescript-eslint/parser\":\"^1.13.0\",\"all-contributors-cli\":\"^6.0.0\",\"babel-core\":\"^7.0.0-bridge.0\",\"babel-jest\":\"^24.1.0\",\"babel-plugin-add-module-exports\":\"^1.0.0\",\"babel-plugin-transform-async-to-generator\":\"^6.24.1\",\"bundlesize\":\"^0.18.0\",\"enzyme\":\"^3.8.0\",\"enzyme-adapter-react-16\":\"^1.7.1\",\"eslint\":\"^6.1.0\",\"eslint-plugin-import\":\"^2.17.1\",\"eslint-plugin-jsx-a11y\":\"^6.1.2\",\"eslint-plugin-react\":\"^7.14.3\",\"husky\":\"^3.0.0\",\"jest\":\"^24.1.0\",\"jest-puppeteer\":\"^4.0.0\",\"jsdom\":\"^15.0.0\",\"jsdom-global\":\"^3.0.2\",\"next\":\"^9.0.1\",\"puppeteer\":\"^1.11.0\",\"react\":\"^16.12.0\",\"react-dom\":\"^16.12.0\",\"typescript\":\"^3.5.3\"},\"engines\":{\"node\":\">=8\"},\"funding\":{\"type\":\"github\",\"url\":\"https://github.com/sponsors/isaachinman\"},\"homepage\":\"https://github.com/isaachinman/next-i18next#readme\",\"husky\":{\"hooks\":{\"pre-commit\":\"yarn lint && yarn test\"}},\"keywords\":[\"react\",\"i18next\",\"nextjs\",\"next\",\"translation\",\"localisation\",\"localization\",\"locale\"],\"license\":\"MIT\",\"main\":\"dist/commonjs/index.js\",\"name\":\"next-i18next\",\"peerDependencies\":{\"next\":\">= 7.0.0\",\"react\":\">= 16.8.0\"},\"repository\":{\"type\":\"git\",\"url\":\"git+ssh://git@github.com/isaachinman/next-i18next.git\"},\"scripts\":{\"build\":\"yarn clean && yarn build:cjs && yarn build:es\",\"build:cjs\":\"BABEL_ENV=cjs babel src --extensions '.ts,.tsx' --out-dir dist/commonjs\",\"build:es\":\"BABEL_ENV=es babel src --extensions '.ts,.tsx' --out-dir dist/es\",\"build:examples/simple\":\"yarn --cwd examples/simple && yarn --cwd examples/simple build\",\"check-types\":\"tsc\",\"clean\":\"rm -rf examples/simple/.next && rm -rf dist && mkdir dist\",\"contributors:add\":\"all-contributors add\",\"contributors:check\":\"all-contributors check\",\"contributors:generate\":\"all-contributors generate\",\"heroku-postbuild\":\"yarn build && yarn build:examples/simple\",\"lint\":\"eslint types.d.ts src/**/* examples __tests__/**/*\",\"lint:fix\":\"eslint types.d.ts src/**/* examples __tests__/**/* --fix\",\"prepublishOnly\":\"yarn build\",\"run-example\":\"yarn build && cd examples/simple && yarn && yarn dev\",\"run-example:prod\":\"yarn --cwd examples/simple start\",\"test\":\"yarn check-types && yarn build && yarn build:examples/simple && bundlesize && NODE_ENV=test jest --maxWorkers=1 --silent\"},\"types\":\"./types.d.ts\",\"version\":\"4.2.1\"}");
 
 /***/ }),
 
@@ -1533,7 +1560,7 @@ class Homepage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       isArabic: isArabic,
       manageLanguage: this._manageLanguage,
       flagUrl: !isArabic ? '/static/images/ar.png' : '/static/images/en.png'
-    }), __jsx(_components_SearchPage__WEBPACK_IMPORTED_MODULE_6__["default"], null), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+    }), __jsx(_components_MainPage__WEBPACK_IMPORTED_MODULE_5__["default"], null), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
   }
 
 }
@@ -1556,8 +1583,19 @@ Homepage.propTypes = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/piyushkalsariya/projects/Dealbab/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! C:\Users\PAVAN TANK\Desktop\New folder\Dealbab\pages\index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 

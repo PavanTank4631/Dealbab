@@ -31,8 +31,8 @@ class Homepage extends Component {
     return (
       <html dir={isArabic ? "rtl" : "ltr"}>
         <Header isArabic={isArabic} manageLanguage={this._manageLanguage} flagUrl={!isArabic ? '/static/images/ar.png' : '/static/images/en.png'} />
-        {/* <MainPage /> */}
-        <SearchPage />
+        <MainPage />
+        {/* <SearchPage /> */}
         <Footer />
       </html>
     )

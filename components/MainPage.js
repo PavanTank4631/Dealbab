@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { withTranslation } from '../i18n'
-
+import axios from 'axios'
 
 //styling
 import {
@@ -155,6 +155,8 @@ const COUPENS = [
 class MainPage extends Component {
   constructor(props) {
     super(props)
+    this._fetchCategories = this._fetchCategories.bind(this)
+
     this.state = {
       DISCLAIMER: [
         { title: props.t('descTitle1'), detail: props.t('descDetail1') },
@@ -193,13 +195,17 @@ class MainPage extends Component {
         { title: 'Slide3', img: '/static/images/slide1.jpg' },
       ],
       activeIndex: 0,
-      animating: false
+      animating: false,
+      availableCategories: ''
     }
   }
 
+  componentDidMount = () => {
+    this._fetchFeaturedProducts()
+    this._fetchCategories()
+  };
+
   render() {
-    const { favIndex } = this.state;
-    const { t } = this.props
 
     return (
       <div className="main-page-container">
@@ -243,6 +249,33 @@ class MainPage extends Component {
     this.setState({ activeIndex: newIndex })
   }
 
+
+
+  _fetchFeaturedProducts = () => {
+    const URL = "http://ec2-15-185-88-172.me-south-1.compute.amazonaws.com:8080/manualDealsbyOffsetValue"
+    let data = { offsetValue: 1 }
+
+    axios.post(URL, data)
+      .then((response) => {
+        console.log('response', response)
+      })
+      .catch((error) => {
+        console.log('error', error.response)
+      });
+  }
+
+  _fetchCategories = () => {
+    const URL = "http://ec2-15-185-88-172.me-south-1.compute.amazonaws.com:8080/categoryList"
+
+    axios.get(URL)
+      .then((res) => {
+        this.setState({ availableCategories: res.data.Categories })
+      })
+      .catch((err) => {
+        console.log('err', err)
+      })
+  }
+
   /*
   ..######...#######..##.....##.########...#######..##....##.########.##....##.########..######.
   .##....##.##.....##.###...###.##.....##.##.....##.###...##.##.......###...##....##....##....##
@@ -279,6 +312,7 @@ class MainPage extends Component {
   }
 
   renderLeftComponent = () => {
+    console.log('availableCategories', this.state.availableCategories)
     const { CATEGORIES, POPULAR_SEARCHES } = this.state
     const { t } = this.props
 
@@ -300,7 +334,7 @@ class MainPage extends Component {
         {data.map((item, index) => {
           return (
             <div key={item.toString()}>
-              <a href="#" className="sidebar-items">{item.title}</a>
+              <a href="#" className="sidebar-items">{item.category_name}</a>
             </div>
           )
         })}

@@ -118,7 +118,7 @@ class Footer extends Component {
             </Col>
             <Col lg={3} md={6} sm={12} className="column">
               <div className="help-container">
-                <p className="help-title">{t('help-title')}<FaRegQuestionCircle className="help-icon" /></p>
+                <p className="help-title">{t('help-title')}</p>
                 <p className="help-subtitle">{t('help-tagline')}</p>
               </div>
               <h5 className="col-title">{t('follow-us')}</h5>
