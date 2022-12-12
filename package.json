@@ -16,7 +16,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "detect-browser-language": "0.0.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "i18next": "^14.0.1",
     "i18next-browser-languagedetector": "^4.0.2",
     "next": "^9.1.6",
